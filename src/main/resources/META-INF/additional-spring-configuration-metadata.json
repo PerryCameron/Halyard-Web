@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "hibernate.hbm2ddl.auto",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.hbm2ddl.auto'"
+  },
+  {
+    "name": "hibernate.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.dialect'"
+  },
+  {
+    "name": "jdbcdbc.url",
+    "type": "java.lang.String",
+    "description": "A description for 'jdbcdbc.url'"
+  },
+  {
+    "name": "cdbc.password",
+    "type": "java.lang.String",
+    "description": "A description for 'cdbc.password'"
+  },
+  {
+    "name": "jdbc.username",
+    "type": "java.lang.String",
+    "description": "A description for 'jdbc.username'"
+  },
+  {
+    "name": "hibernate.show_sql",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.show_sql'"
+  },
+  {
+    "name": ".driver",
+    "type": "java.lang.String",
+    "description": "A description for '.driver'"
+  }
+]}
