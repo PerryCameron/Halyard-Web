@@ -2,7 +2,7 @@ package main.service;
 
 import java.util.List;
 
-import main.model.MembershipDTO;
+import main.dto.MembershipDTO;
 import main.model.Membership;
 
 public interface MembershipService {

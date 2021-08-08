@@ -1,13 +1,18 @@
 package main.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "membership")
@@ -21,6 +26,7 @@ public class Membership {
 	@Column(name="p_id")
 	int pid;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="join_date")
 	private Date joinDate;
 	
@@ -34,6 +40,9 @@ public class Membership {
 	String state;
 	
 	String zip;
+	
+	@OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Person> people;
 
 	public int getMsid() {
 		return msid;
@@ -97,6 +106,14 @@ public class Membership {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public List<Person> getPeople() {
+		return people;
+	}
+
+	public void setPeople(List<Person> people) {
+		this.people = people;
 	}
 	
 }

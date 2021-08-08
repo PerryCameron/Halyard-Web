@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.model.Membership;
-import main.model.MembershipDTO;
+import main.model.Person;
+import main.dto.MembershipDTO;
 import main.repository.MembershipRepository;
 
 @Service
@@ -39,6 +40,18 @@ public class MembershipServiceImpl implements MembershipService {
 	public void delete(int id) {
 		membershipRepository.deleteById(id);
 	}
+//
+//	@Override
+//	public List<MembershipDTO> getAllDTO() {
+//		List<Membership> membership = getAll();
+//		//membership.forEach((n) -> System.out.println(n));
+//		System.out.println("The size is " + membership.size());
+//		List<MembershipDTO> membershipDTO = membership.stream()
+//				.map(o -> new MembershipDTO(o.getMsid(), o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(), null))
+//				.collect(Collectors.toList());
+//		return membershipDTO;
+//	}
+	
 
 	@Override
 	public List<MembershipDTO> getAllDTO() {
@@ -46,9 +59,19 @@ public class MembershipServiceImpl implements MembershipService {
 		//membership.forEach((n) -> System.out.println(n));
 		System.out.println("The size is " + membership.size());
 		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMsid(), o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))
+				.map(o -> new MembershipDTO(o.getMsid(), getPrimary(o.getPeople()), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))
 				.collect(Collectors.toList());
 		return membershipDTO;
+	}
+	
+	public String getPrimary(List<Person> people) {
+		String name = null;
+		for(Person p: people) {
+			if(p.getMemberType() == 1) {
+				name = p.getLastName() + " " + p.getFirstName();
+			}
+		}
+		return name;
 	}
 
 }

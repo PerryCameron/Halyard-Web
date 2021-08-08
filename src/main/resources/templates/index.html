@@ -37,7 +37,7 @@
 				<tbody>
 					<tr th:each="membershipDTO : ${membershipDTO}">
 						<td th:text="${membershipDTO.msid}"></td>					
-						<td th:text="${membershipDTO.pid}"></td>
+						<td th:text="${membershipDTO.primaryMember}"></td>
 						<td th:text="${membershipDTO.joinDate}"></td>
 						<td th:text="${membershipDTO.memType}"></td>
 						<td th:text="${membershipDTO.address}"></td>
