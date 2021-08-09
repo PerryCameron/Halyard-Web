@@ -4,10 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,9 +22,8 @@ public class Person {
 	@Column(name="p_id")
 	int pid;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "p_id", referencedColumnName = "p_id",insertable=false, updatable=false)
-//	private Membership membership;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Membership membership;
 	
 	@Column(name="ms_id")
 	int msid;
@@ -131,13 +130,13 @@ public class Person {
 		this.nickName = nickName;
 	}
 
-//	public Membership getMembership() {
-//		return membership;
-//	}
-//
-//	public void setMembership(Membership membership) {
-//		this.membership = membership;
-//	}
-//	
+	public Membership getMembership() {
+		return membership;
+	}
+
+	public void setMembership(Membership membership) {
+		this.membership = membership;
+	}
+	
 	
 }

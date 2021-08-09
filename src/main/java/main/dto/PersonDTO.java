@@ -24,13 +24,9 @@ public class PersonDTO {
 		
 		String nickName;
 		
-		
-
 		public PersonDTO() {
 		}
 		
-		
-
 		public PersonDTO(int pid, int msid, int memberType, String firstName, String lastName, Date birthday,
 				String occupation, String buisness, boolean isActive, String nickName) {
 			super();
@@ -45,8 +41,6 @@ public class PersonDTO {
 			this.isActive = isActive;
 			this.nickName = nickName;
 		}
-
-
 
 		public int getPid() {
 			return pid;

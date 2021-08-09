@@ -1,5 +1,6 @@
 package main.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,8 +42,8 @@ public class Membership {
 	String state;
 	
 	String zip;
-	
-	@OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	//targetEntity=Person.class
+	@OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Person> people;
 
 	public int getMsid() {
