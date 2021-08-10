@@ -1,6 +1,5 @@
 package main.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -42,9 +40,9 @@ public class Membership {
 	String state;
 	
 	String zip;
-	//targetEntity=Person.class
-	@OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Person> people;
+//targetEntity=Person.class
+//	@OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Person> people;
 
 	public int getMsid() {
 		return msid;
@@ -110,12 +108,12 @@ public class Membership {
 		this.zip = zip;
 	}
 
-	public List<Person> getPeople() {
-		return people;
-	}
-
-	public void setPeople(List<Person> people) {
-		this.people = people;
-	}
+//	public List<Person> getPeople() {
+//		return people;
+//	}
+//
+//	public void setPeople(List<Person> people) {
+//		this.people = people;
+//	}
 	
 }

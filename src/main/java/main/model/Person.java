@@ -22,8 +22,8 @@ public class Person {
 	@Column(name="p_id")
 	int pid;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Membership membership;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	private Membership membership;
 	
 	@Column(name="ms_id")
 	int msid;
@@ -129,14 +129,14 @@ public class Person {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
-	public Membership getMembership() {
-		return membership;
-	}
-
-	public void setMembership(Membership membership) {
-		this.membership = membership;
-	}
-	
+//
+//	public Membership getMembership() {
+//		return membership;
+//	}
+//
+//	public void setMembership(Membership membership) {
+//		this.membership = membership;
+//	}
+//	
 	
 }

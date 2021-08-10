@@ -56,7 +56,7 @@ public class MembershipServiceImpl implements MembershipService {
 	public List<MembershipDTO> getAllDTO() {
 		List<Membership> membership = getAll();
 		//List<PersonDTO> person = new PersonServiceImpl().getSelectDTO(null);
-		membership.forEach((n) -> System.out.println(n.getPeople().size()));
+		//membership.forEach((n) -> System.out.println(n.getPeople().size()));
 		
 		List<MembershipDTO> membershipDTO = membership.stream()
 				.map(o -> new MembershipDTO(o.getMsid(), o.getPid() + "" , o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))

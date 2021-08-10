@@ -44,8 +44,6 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public List<PersonDTO> getAllDTO() {
 		List<Person> people = getAll();
-		//membership.forEach((n) -> System.out.println(n));
-		System.out.println("The size is " + people.size());
 		List<PersonDTO> personDTO = people.stream()
 				.map(o -> new PersonDTO(o.getPid(), o.getMsid(), o.getMemberType(), o.getFirstName(), o.getLastName(), o.getBirthday(), o.getOccupation(), o.getBuisness(),false, o.getNickName()))
 				.collect(Collectors.toList());
