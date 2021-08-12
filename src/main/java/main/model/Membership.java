@@ -40,9 +40,10 @@ public class Membership {
 	String state;
 	
 	String zip;
-//targetEntity=Person.class
-//	@OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Person> people;
+
+	//targetEntity=Person.class
+	@OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Person> people;
 
 	public int getMsid() {
 		return msid;

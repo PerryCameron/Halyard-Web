@@ -1,5 +1,6 @@
 package main.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,14 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.model.Membership;
+import main.model.Person;
 import main.dto.MembershipDTO;
+import main.dto.PersonDTO;
 import main.repository.MembershipRepository;
+import main.repository.PersonRepository;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
 
 	@Autowired
 	private MembershipRepository membershipRepository;
+	
+	@Autowired
+	private PersonRepository personRepository;
 	
 	@Override
 	public List<Membership> getAll() {
@@ -59,9 +66,23 @@ public class MembershipServiceImpl implements MembershipService {
 		//membership.forEach((n) -> System.out.println(n.getPeople().size()));
 		
 		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMsid(), o.getPid() + "" , o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))
+				.map(o -> new MembershipDTO(o.getMsid(), getPrimary(o.getMsid()) , o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))
 				.collect(Collectors.toList());
 		return membershipDTO;
+	}
+	
+	//@Override
+	public String getPrimary(int msid) {
+		String primary = "";
+		List<Person> people = personRepository.findAll();
+		//List<PersonDTO> personDTO = new ArrayList<>();
+		for(Person p: people) {
+			if(p.getMsid() == msid && p.getMemberType() ==1) {
+			//	personDTO.add(new PersonDTO(p.getPid(),p.getMsid(),p.getMemberType(), p.getFirstName(), p.getLastName(), p.getBirthday(), p.getOccupation(), p.getBuisness(),false, p.getNickName()));
+				primary = p.getFirstName() + " " + p.getLastName();
+			}
+		}
+		return primary;
 	}
 	
 
