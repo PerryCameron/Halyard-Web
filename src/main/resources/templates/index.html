@@ -29,12 +29,13 @@
 					<tr th:each="membershipDTO : ${membershipDTO}">
 						<td th:text="${membershipDTO.msid}"></td>					
 						<td th:text="${membershipDTO.primaryMember}"></td>
-						<td th:text="${membershipDTO.joinDate}"></td>
+						<td th:text="${#dates.format(membershipDTO.joinDate, 'dd-MMM-yyyy')}"></td>
 						<td th:text="${membershipDTO.memType}"></td>
 						<td th:text="${membershipDTO.address}"></td>
 						<td th:text="${membershipDTO.city}"></td>
 						<td th:text="${membershipDTO.state}"></td>
 						<td th:text="${membershipDTO.zip}"></td>
+						<td><a type="button" class="btn btn-primary" href="/">Edit</a></td>
 <!-- 						<td><a class="btn btn-primary" th:if="${offerDTO.id} &gt; 0" th:href="@{/editOffer/} + ${offerDTO.id}">Edit</a></td>
 						<td><a class="btn btn-danger" th:if="${offerDTO.id} &gt; 0" th:href="@{/deleteOffer/} + ${offerDTO.id}">Delete</a></td>
  -->					</tr>
@@ -46,5 +47,4 @@
 			<h3>No tours in the offer</h3>
 		</div> -->
 	</div>
-</body>
-</html>
+<div th:replace="fragments/footer :: foot"></div>
