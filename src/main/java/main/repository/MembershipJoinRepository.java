@@ -6,18 +6,19 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import main.dto.MembershipJoinDTO;
 import main.model.Membership;
 
 @Repository
-@Transactional
-public interface MembershipRepository extends JpaRepository<Membership, Integer> {
+public interface MembershipJoinRepository extends JpaRepository<Membership, Integer> {
 	
-	@Query(value = "select * from membership where city = :city", nativeQuery = true)
-	List<Membership> findMembershipsByCity(@Param("city") String city);
+	@Query(value = "select m.ms_id, m.p_id, m.join_date, m.mem_type, m.address, m.city, m.state, "
+			+ "m.zip, p.l_name, p.f_name from membership m left join person p on p.ms_id=m.ms_id "
+			+ "where p.MEMBER_TYPE=1;", nativeQuery = true)
+	List<MembershipJoinDTO> findAllJoins();
+	
 
 }
 

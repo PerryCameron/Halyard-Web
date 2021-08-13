@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import main.model.Membership;
 import main.model.Person;
 import main.dto.MembershipDTO;
+import main.dto.MembershipJoinDTO;
 import main.repository.MembershipRepository;
 import main.repository.PersonRepository;
 
@@ -52,17 +53,6 @@ public class MembershipServiceImpl implements MembershipService {
 				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
 	}
-//
-//	@Override
-//	public List<MembershipDTO> getAllDTO() {
-//		List<Membership> membership = getAll();
-//		//membership.forEach((n) -> System.out.println(n));
-//		System.out.println("The size is " + membership.size());
-//		List<MembershipDTO> membershipDTO = membership.stream()
-//				.map(o -> new MembershipDTO(o.getMsid(), o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(), null))
-//				.collect(Collectors.toList());
-//		return membershipDTO;
-//	}
 	
 
 	@Override
@@ -72,22 +62,5 @@ public class MembershipServiceImpl implements MembershipService {
 				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
 	}
-	
-	//@Override
-	public String getPrimary(int msid) {
-		String primary = "";
-		List<Person> people = personRepository.findAll();
-		//List<PersonDTO> personDTO = new ArrayList<>();
-		for(Person p: people) {
-			if(p.getMsid() == msid && p.getMemberType() ==1) {
-			//	personDTO.add(new PersonDTO(p.getPid(),p.getMsid(),p.getMemberType(), p.getFirstName(), p.getLastName(), p.getBirthday(), p.getOccupation(), p.getBuisness(),false, p.getNickName()));
-				primary = p.getFirstName() + " " + p.getLastName();
-			}
-		}
-		return primary;
-	}
-
-
-	
 
 }

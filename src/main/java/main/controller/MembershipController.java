@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import main.dto.MembershipDTO;
+import main.dto.MembershipJoinDTO;
+import main.service.MembershipJoinService;
 import main.service.MembershipService;
 
 @Controller
@@ -16,6 +18,9 @@ public class MembershipController {
 	
 	@Autowired
 	private MembershipService membershipService;
+	
+	@Autowired
+	private MembershipJoinService membershipJoinService;
 	
 	@GetMapping("/")
 	public String getHomePage(Model model) {
@@ -28,7 +33,14 @@ public class MembershipController {
 	public String getMembershipByCity(Model model, @PathVariable String city) {
 		List<MembershipDTO> membershipDTO = membershipService.findMembershipsByCity(city);
 		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
-		return "index2";
+		return "index";
+	}
+	
+	@GetMapping("/memberships")
+	public String getMembershipByYear(Model model) {
+		List<MembershipJoinDTO> membershipJoinDTO = membershipJoinService.getAll();
+		model.addAttribute("membershipJoinDTO)", membershipJoinDTO);
+		return "memberships";	
 	}
 	
 //	@GetMapping("/")

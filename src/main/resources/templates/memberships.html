@@ -12,7 +12,7 @@
 		</div>
 		
 		<div class="row">
-			<table class="table table-hover" th:if="${!membershipDTO.empty}">
+			<table class="table table-hover" th:if="${!membershipJoinDTO.empty}">
 				<thead>
 					<tr>
 						<th scope="col">#</th>
@@ -26,15 +26,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="membershipDTO : ${membershipDTO}">
-						<td th:text="${membershipDTO.msid}"></td>					
-						<td th:text="${membershipDTO.primaryMember}"></td>
-						<td th:text="${#dates.format(membershipDTO.joinDate, 'dd-MMM-yyyy')}"></td>
-						<td th:text="${membershipDTO.memType}"></td>
-						<td th:text="${membershipDTO.address}"></td>
-						<td th:text="${membershipDTO.city}"></td>
-						<td th:text="${membershipDTO.state}"></td>
-						<td th:text="${membershipDTO.zip}"></td>
+					<tr th:each="membershipJoinDTO : ${membershipJoinDTO}">
+						<td th:text="${membershipJoinDTO.msid}"></td>					
+						<td th:text="${membershipJoinDTO.l_name}"></td>
+						<td th:text="${#dates.format(membershipJoinDTO.joinDate, 'dd-MMM-yyyy')}"></td>
+						<td th:text="${membershipJoinDTO.memType}"></td>
+						<td th:text="${membershipJoinDTO.address}"></td>
+						<td th:text="${membershipJoinDTO.city}"></td>
+						<td th:text="${membershipJoinDTO.state}"></td>
+						<td th:text="${membershipJoinDTO.zip}"></td>
 						<td><a type="button" class="btn btn-primary" href="/">Edit</a></td>
 <!-- 						<td><a class="btn btn-primary" th:if="${offerDTO.id} &gt; 0" th:href="@{/editOffer/} + ${offerDTO.id}">Edit</a></td>
 						<td><a class="btn btn-danger" th:if="${offerDTO.id} &gt; 0" th:href="@{/deleteOffer/} + ${offerDTO.id}">Delete</a></td>
