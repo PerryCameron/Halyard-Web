@@ -44,6 +44,14 @@ public class MembershipServiceImpl implements MembershipService {
 	public void delete(int id) {
 		membershipRepository.deleteById(id);
 	}
+	
+	@Override
+	public List<MembershipDTO> findMembershipsByCity(String city) {
+		List<Membership> membership = membershipRepository.findMembershipsByCity(city);
+		List<MembershipDTO> membershipDTO = membership.stream()
+				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+		return membershipDTO;
+	}
 //
 //	@Override
 //	public List<MembershipDTO> getAllDTO() {
@@ -60,9 +68,6 @@ public class MembershipServiceImpl implements MembershipService {
 	@Override
 	public List<MembershipDTO> getAllDTO() {
 		List<Membership> membership = getAll();
-		//List<PersonDTO> person = new PersonServiceImpl().getSelectDTO(null);
-		membership.forEach((n) -> System.out.println(n.getPeople().size()));
-		
 		List<MembershipDTO> membershipDTO = membership.stream()
 				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
@@ -81,6 +86,8 @@ public class MembershipServiceImpl implements MembershipService {
 		}
 		return primary;
 	}
+
+
 	
 
 }

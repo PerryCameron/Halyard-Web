@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import main.dto.MembershipDTO;
 import main.service.MembershipService;
 
@@ -20,6 +22,13 @@ public class MembershipController {
 		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
 		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
 		return "index";
+	}
+	
+	@GetMapping("/bycity/{city}")
+	public String getMembershipByCity(Model model, @PathVariable String city) {
+		List<MembershipDTO> membershipDTO = membershipService.findMembershipsByCity(city);
+		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
+		return "index2";
 	}
 	
 //	@GetMapping("/")
