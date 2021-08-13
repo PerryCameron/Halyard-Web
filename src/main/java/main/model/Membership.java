@@ -3,9 +3,9 @@ package main.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,9 +40,12 @@ public class Membership {
 	String state;
 	
 	String zip;
+	
 
 	//targetEntity=Person.class
-	@OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	//@OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	//@JoinColumn(name ="p_id",referencedColumnName = "id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "membership")
 	private List<Person> people;
 
 	public int getMsid() {
@@ -109,12 +112,12 @@ public class Membership {
 		this.zip = zip;
 	}
 
-//	public List<Person> getPeople() {
-//		return people;
-//	}
-//
-//	public void setPeople(List<Person> people) {
-//		this.people = people;
-//	}
+	public List<Person> getPeople() {
+		return people;
+	}
+
+	public void setPeople(List<Person> people) {
+		this.people = people;
+	}	
 	
 }

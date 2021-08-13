@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -22,8 +23,9 @@ public class Person {
 	@Column(name="p_id")
 	int pid;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	private Membership membership;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "msid")
+	private Membership membership;
 	
 	@Column(name="ms_id")
 	int msid;

@@ -19,7 +19,6 @@ public class MembershipController {
 	public String getHomePage(Model model) {
 		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
 		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
-		System.out.println("Membership size = " + membershipDTO.size());
 		return "index";
 	}
 	

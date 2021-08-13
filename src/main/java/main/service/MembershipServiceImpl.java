@@ -1,6 +1,5 @@
 package main.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import main.model.Membership;
 import main.model.Person;
 import main.dto.MembershipDTO;
-import main.dto.PersonDTO;
 import main.repository.MembershipRepository;
 import main.repository.PersonRepository;
 
@@ -63,11 +61,10 @@ public class MembershipServiceImpl implements MembershipService {
 	public List<MembershipDTO> getAllDTO() {
 		List<Membership> membership = getAll();
 		//List<PersonDTO> person = new PersonServiceImpl().getSelectDTO(null);
-		//membership.forEach((n) -> System.out.println(n.getPeople().size()));
+		membership.forEach((n) -> System.out.println(n.getPeople().size()));
 		
 		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMsid(), getPrimary(o.getMsid()) , o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip()))
-				.collect(Collectors.toList());
+				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
 	}
 	
