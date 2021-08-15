@@ -21,7 +21,7 @@ public class MembershipController {
 	
 	@Autowired
 	private MembershipJoinService membershipJoinService;
-	//
+
 	@GetMapping("/")
 	public String getHomePage(Model model) {
 		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
