@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.PersonDTO;
+import main.model.Person;
 import main.service.PersonService;
 
 @Controller
@@ -29,6 +31,18 @@ public class PeopleController {
 		List<PersonDTO> personDTO = peopleService.getSelectDTO(msid);
 		model.addAttribute("peopleDTO", personDTO);  // creates the name you can use in your view
 		return "people";
+	}
+
+	@GetMapping("/peoplejson")
+	@ResponseBody
+	public List<Person> getPeople() {
+		return peopleService.getAll();	
+	}
+
+	@GetMapping("/people/primary")
+	@ResponseBody
+	public List<Person> getPrimaryMember() {
+		return peopleService.getPrimaryMember();	
 	}
 	
 //	@GetMapping("/")

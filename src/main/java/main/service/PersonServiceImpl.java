@@ -68,6 +68,11 @@ public class PersonServiceImpl implements PersonService {
 		return null;
 	}
 
+	@Override
+	public List<Person> getPrimaryMember() {
+		return personRepository.findPrimaryMember();
+	}
+
 
 
 

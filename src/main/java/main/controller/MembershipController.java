@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.MembershipDTO;
 import main.dto.MembershipJoinDTO;
+import main.model.Membership;
 import main.service.MembershipJoinService;
 import main.service.MembershipService;
 
@@ -41,6 +43,12 @@ public class MembershipController {
 		List<MembershipJoinDTO> membershipJoinDTO = membershipJoinService.getAll();
 		model.addAttribute("membershipJoinDTO)", membershipJoinDTO);
 		return "memberships";	
+	}
+
+	@GetMapping("/membershipsjson")
+	@ResponseBody
+	public List<Membership> getMembership() {
+		return membershipService.getAll();	
 	}
 	
 //	@GetMapping("/")

@@ -8,20 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.model.Membership;
-import main.model.Person;
 import main.dto.MembershipDTO;
-import main.dto.MembershipJoinDTO;
 import main.repository.MembershipRepository;
-import main.repository.PersonRepository;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
 
 	@Autowired
 	private MembershipRepository membershipRepository;
-	
-	@Autowired
-	private PersonRepository personRepository;
 	
 	@Override
 	public List<Membership> getAll() {

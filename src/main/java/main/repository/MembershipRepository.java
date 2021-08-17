@@ -16,9 +16,8 @@ import main.model.Membership;
 @Transactional
 public interface MembershipRepository extends JpaRepository<Membership, Integer> {
 	
-	@Query(value = "select * from membership where city = :city", nativeQuery = true)
+	@Query(value = "Select m.MS_ID,m.P_ID,m.JOIN_DATE,p.L_NAME,p.F_NAME,m.address,m.city,m.state,m.zip from membership m left join person p on p.MS_ID=m.MS_ID;", nativeQuery = true)
 	List<Membership> findMembershipsByCity(@Param("city") String city);
-
 }
 
 //Select m.MS_ID,m.P_ID,id.MEMBERSHIP_ID,id.FISCAL_YEAR,id.FISCAL_YEAR,m.JOIN_DATE,id.MEM_TYPE,s.SLIP_NUM,p.L_NAME,p.F_NAME,s.SUBLEASED_TO,m.address,m.city,m.state,m.zip "
