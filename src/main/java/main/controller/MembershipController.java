@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.MembershipDTO;
-import main.dto.MembershipJoinDTO;
 import main.model.Membership;
-import main.service.MembershipJoinService;
 import main.service.MembershipService;
 
 @Controller
@@ -20,9 +18,7 @@ public class MembershipController {
 	
 	@Autowired
 	private MembershipService membershipService;
-	
-	@Autowired
-	private MembershipJoinService membershipJoinService;
+
 
 	@GetMapping("/")
 	public String getHomePage(Model model) {
@@ -38,12 +34,6 @@ public class MembershipController {
 		return "index";
 	}
 	
-	@GetMapping("/memberships")
-	public String getMembershipByYear(Model model) {
-		List<MembershipJoinDTO> membershipJoinDTO = membershipJoinService.getAll();
-		model.addAttribute("membershipJoinDTO)", membershipJoinDTO);
-		return "memberships";	
-	}
 
 	@GetMapping("/membershipsjson")
 	@ResponseBody
