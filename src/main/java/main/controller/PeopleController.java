@@ -35,14 +35,15 @@ public class PeopleController {
 
 	@GetMapping("/peoplejson")
 	@ResponseBody
+
 	public List<Person> getPeople() {
 		return peopleService.getAll();	
 	}
 
-	@GetMapping("/people/primary")
+	@GetMapping("/people/primary/{type}")
 	@ResponseBody
-	public List<Person> getPrimaryMember() {
-		return peopleService.getPrimaryMember();	
+	public List<Person> getPrimaryMember(@PathVariable int type) {
+		return peopleService.getPrimaryMember(type);	
 	}
 	
 //	@GetMapping("/")

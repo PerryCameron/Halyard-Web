@@ -69,8 +69,8 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<Person> getPrimaryMember() {
-		return personRepository.findPrimaryMember();
+	public List<Person> getPrimaryMember(int type) {
+		return personRepository.findPrimaryMember(type);
 	}
 
 

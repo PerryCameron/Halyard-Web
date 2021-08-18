@@ -21,6 +21,6 @@ public interface PersonService {
 	
 	public List<PersonDTO> getSelectDTO(int msid);
 
-	public List<Person> getPrimaryMember();
+	public List<Person> getPrimaryMember(int type);
 	
 }

@@ -11,7 +11,7 @@ import main.model.Person;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer>{
 	
-@Query(value = "select p from Person p where p.memberType=1")
-	List<Person> findPrimaryMember();
+@Query(value = "select p from Person p where p.memberType=?1")
+	List<Person> findPrimaryMember(int type);
 
 }
