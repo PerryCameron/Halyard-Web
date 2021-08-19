@@ -19,5 +19,5 @@ public interface MembershipService {
 	
 	public List<MembershipDTO> findMembershipsByCity(String city);
 	
-
+	public List<Membership> findByMemberType(int type);
 }
