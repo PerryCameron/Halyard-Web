@@ -17,8 +17,10 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
 
 
 	// example of a native query which works
-	@Query(value = "Select m.MS_ID,m.P_ID,m.JOIN_DATE,p.L_NAME,p.F_NAME,m.address,m.city,m.state,m.zip from membership m left join m.person p on p.MS_ID=m.MS_ID;", nativeQuery = true)
+	//@Query(value = "Select m.MS_ID,m.P_ID,m.JOIN_DATE,p.L_NAME,p.F_NAME,m.address,m.city,m.state,m.zip from membership m left join m.person p on p.MS_ID=m.MS_ID;", nativeQuery = true)
 	List<Membership> findMembershipsByCity(@Param("city") String city);
+
+
 	// this does not work, but is here to show a native query
 	// @Query("select m.msid,m.pid,m.joinDate,p.lastName,p.firstName,m.address,m.city,m.state,m.zip from membership m left join person p on p.msid=m.msid")
 	// List<Membership> findMembershipsWithPeople();

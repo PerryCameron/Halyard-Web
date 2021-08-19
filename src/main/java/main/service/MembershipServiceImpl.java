@@ -57,9 +57,9 @@ public class MembershipServiceImpl implements MembershipService {
 		return membershipDTO;
 	}
 
-	@Override
-	public List<Membership> findByMemberType(int type) {
-		return membershipRepository.findByMemberType(type);
-	}
+	 @Override
+	 public List<Membership> findByMemberType(int type) {
+	 	return membershipRepository.findByMemberType(type);
+	 }
 
 }
