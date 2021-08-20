@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,17 +19,13 @@ public class Membership {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ms_id")
-	int msid;
+	int ms_id;
 	
-	@Column(name="p_id")
-	int pid;
+	int p_id;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="join_date")
-	private Date joinDate;
+	private Date join_date;
 	
-	@Column(name="mem_type")
 	String memType;
 	
 	String address;
@@ -44,28 +39,28 @@ public class Membership {
 	@OneToMany(mappedBy = "membership", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Person> people;
 
-	public int getMsid() {
-		return msid;
+	public int getMs_id() {
+		return ms_id;
 	}
 
-	public void setMsid(int msid) {
-		this.msid = msid;
+	public void setMs_id(int ms_id) {
+		this.ms_id = ms_id;
 	}
 
-	public int getPid() {
-		return pid;
+	public int getP_id() {
+		return p_id;
 	}
 
-	public void setPid(int pid) {
-		this.pid = pid;
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
 	}
 
-	public Date getJoinDate() {
-		return joinDate;
+	public Date getJoin_date() {
+		return join_date;
 	}
 
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+	public void setJoin_date(Date join_date) {
+		this.join_date = join_date;
 	}
 
 	public String getMemType() {
@@ -114,8 +109,6 @@ public class Membership {
 
 	public void setPeople(List<Person> people) {
 		this.people = people;
-	}	
-
-
+	}
 	
 }

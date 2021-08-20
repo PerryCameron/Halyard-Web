@@ -41,11 +41,11 @@ public class MembershipController {
 		return membershipService.getAll();	
 	}
 
-	@GetMapping("/membertype")
-	@ResponseBody
-	public List<Membership> getMembershipWithPrimary() {
-		return membershipService.findByMemberType(1);	
-	}
+	// @GetMapping("/membertype")
+	// @ResponseBody
+	// public List<Membership> getMembershipWithPrimary() {
+	// 	return membershipService.findByMemberType(1);	
+	// }
 	
 //	@GetMapping("/")
 //	public String getHomePage(Model model) {

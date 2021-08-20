@@ -26,9 +26,9 @@ public class PeopleController {
 		return "people";
 	}
 	
-	@GetMapping("/person/{msid}")
-	public String getHomePage(Model model, @PathVariable int msid) {
-		List<PersonDTO> personDTO = peopleService.getSelectDTO(msid);
+	@GetMapping("/person/{ms_id}")
+	public String getHomePage(Model model, @PathVariable int ms_id) {
+		List<PersonDTO> personDTO = peopleService.getSelectDTO(ms_id);
 		model.addAttribute("peopleDTO", personDTO);  // creates the name you can use in your view
 		return "people";
 	}
@@ -40,11 +40,11 @@ public class PeopleController {
 		return peopleService.getAll();	
 	}
 
-	@GetMapping("/people/primary/{type}")
-	@ResponseBody
-	public List<Person> getPrimaryMember(@PathVariable int type) {
-		return peopleService.getPrimaryMember(type);	
-	}
+	// @GetMapping("/people/primary/{type}")
+	// @ResponseBody
+	// public List<Person> getPrimaryMember(@PathVariable int type) {
+	// 	return peopleService.getPrimaryMember(type);	
+	// }
 	
 //	@GetMapping("/")
 //	public String getHomePage(Model model) {

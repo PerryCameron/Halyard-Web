@@ -30,7 +30,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public void saveOrUpdate(Person person) {
-		if(person.getMsid() == 0) {
+		if(person.getMs_id() == 0) {
 			person.setBirthday(new Date());
 		}
 		personRepository.save(person);
@@ -45,7 +45,7 @@ public class PersonServiceImpl implements PersonService {
 	public List<PersonDTO> getAllDTO() {
 		List<Person> people = getAll();
 		List<PersonDTO> personDTO = people.stream()
-				.map(o -> new PersonDTO(o.getPid(), o.getMsid(), o.getMemberType(), o.getFirstName(), o.getLastName(), o.getBirthday(), o.getOccupation(), o.getBuisness(),false, o.getNickName()))
+				.map(o -> new PersonDTO(o.getP_id(), o.getMs_id(), o.getMember_type(), o.getF_name(), o.getL_name(), o.getBirthday(), o.getOccupation(), o.getBuisness(),false, o.getNick_name()))
 				.collect(Collectors.toList());
 		return personDTO;
 	}
@@ -55,8 +55,8 @@ public class PersonServiceImpl implements PersonService {
 		List<Person> people = getAll();
 		List<PersonDTO> personDTO = new ArrayList<>();
 		for(Person p: people) {
-			if(p.getMsid() == msid) {
-				personDTO.add(new PersonDTO(p.getPid(),p.getMsid(),p.getMemberType(), p.getFirstName(), p.getLastName(), p.getBirthday(), p.getOccupation(), p.getBuisness(),false, p.getNickName()));
+			if(p.getMs_id() == msid) {
+				personDTO.add(new PersonDTO(p.getP_id(), p.getMs_id(), p.getMember_type(), p.getF_name(), p.getL_name(), p.getBirthday(), p.getOccupation(), p.getBuisness(),false, p.getNick_name()));
 			}
 		}
 		return personDTO;
@@ -67,10 +67,10 @@ public class PersonServiceImpl implements PersonService {
 		return null;
 	}
 
-	@Override
-	public List<Person> getPrimaryMember(int type) {
-		return personRepository.findPrimaryMember(type);
-	}
+	// @Override
+	// public List<Person> getPrimaryMember(int type) {
+	// 	return personRepository.findPrimaryMember(type);
+	// }
 
 
 

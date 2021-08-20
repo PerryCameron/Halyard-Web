@@ -2,7 +2,6 @@ package main.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,24 +20,20 @@ public class Person {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="p_id")
-	int pid;
+	int p_id;
 	
+	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "msid")
+	@JoinColumn(name = "ms_id", insertable=false,updatable=false)
 	private Membership membership;
 	
-	@Column(name="ms_id")
-	int msid;
+	int ms_id;
 	
-	@Column(name="member_type")
-	int memberType;
+	int member_type;
 	
-	@Column(name="f_name")
-	String firstName;
+	String f_name;
 	
-	@Column(name="l_name")
-	String lastName;
+	String l_name;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date birthday;
@@ -45,50 +42,56 @@ public class Person {
 	
 	String buisness;
 	
-	@Column(name="is_active")
-	boolean isActive;
+	boolean is_active;
 	
-	@Column(name="nick_name")
-	String nickName;
+	String nick_name;
 
-	public int getPid() {
-		return pid;
+	public int getP_id() {
+		return p_id;
 	}
 
-	public void setPid(int pid) {
-		this.pid = pid;
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
 	}
 
-	public int getMsid() {
-		return msid;
+	public Membership getMembership() {
+		return membership;
 	}
 
-	public void setMsid(int msid) {
-		this.msid = msid;
+	public void setMembership(Membership membership) {
+		this.membership = membership;
 	}
 
-	public int getMemberType() {
-		return memberType;
+	public int getMs_id() {
+		return ms_id;
 	}
 
-	public void setMemberType(int memberType) {
-		this.memberType = memberType;
+	public void setMs_id(int ms_id) {
+		this.ms_id = ms_id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public int getMember_type() {
+		return member_type;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getF_name() {
+		return f_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
+	}
+
+	public String getL_name() {
+		return l_name;
+	}
+
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
 	}
 
 	public Date getBirthday() {
@@ -115,29 +118,20 @@ public class Person {
 		this.buisness = buisness;
 	}
 
-	public boolean isActive() {
-		return isActive;
+	public boolean isIs_active() {
+		return is_active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
 	}
 
-	public String getNickName() {
-		return nickName;
+	public String getNick_name() {
+		return nick_name;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
-//
-//	public Membership getMembership() {
-//		return membership;
-//	}
-//
-//	public void setMembership(Membership membership) {
-//		this.membership = membership;
-//	}
-//	
-	
+
 }

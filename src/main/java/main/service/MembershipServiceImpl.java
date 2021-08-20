@@ -29,8 +29,8 @@ public class MembershipServiceImpl implements MembershipService {
 
 	@Override
 	public void saveOrUpdate(Membership membership) {
-		if(membership.getMsid() == 0) {
-			membership.setJoinDate(new Date());
+		if(membership.getMs_id() == 0) {
+			membership.setJoin_date(new Date());
 		}
 		membershipRepository.save(membership);
 	}
@@ -44,7 +44,7 @@ public class MembershipServiceImpl implements MembershipService {
 	public List<MembershipDTO> findMembershipsByCity(String city) {
 		List<Membership> membership = membershipRepository.findMembershipsByCity(city);
 		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
 	}
 	
@@ -53,13 +53,21 @@ public class MembershipServiceImpl implements MembershipService {
 	public List<MembershipDTO> getAllDTO() {
 		List<Membership> membership = getAll();
 		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMsid(),o.getPid(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
 		return membershipDTO;
 	}
 
-	 @Override
-	 public List<Membership> findByMemberType(int type) {
-	 	return membershipRepository.findByMemberType(type);
-	 }
+	@Override
+	public List<MembershipDTO> findMembershipsWithPeople() {
+		List<Membership> membership = getAll();
+		List<MembershipDTO> membershipDTO = membership.stream()
+				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+		return membershipDTO;
+	}
+
+	//  @Override
+	//  public List<Membership> findByMemberType(int type) {
+	//  	return membershipRepository.findByMemberType(type);
+	//  }
 
 }

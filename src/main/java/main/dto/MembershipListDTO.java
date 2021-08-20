@@ -5,13 +5,13 @@ import java.util.Date;
 
 public class MembershipListDTO {
 	
-	int msid;
+	int ms_id;
 	
-	int pid;
+	int p_id;
 	
-	private Date joinDate;
+	private Date join_date;
 	
-	String memType;
+	String mem_type;
 	
 	String address;
 	
@@ -21,55 +21,57 @@ public class MembershipListDTO {
 	
 	String zip;
 	
-	String firstName;
+	String f_name;
 
-	String lastName;
-	
-	public MembershipListDTO(int msid, int pid, Date joinDate, String memType, String address, String city,
-			String state, String zip, String firstName, String lastName) {
-		super();
-		this.msid = msid;
-		this.pid = pid;
-		this.joinDate = joinDate;
-		this.memType = memType;
+	String l_name;
+
+	public MembershipListDTO() {
+	}
+
+	public MembershipListDTO(int ms_id, int p_id, Date join_date, String mem_type, String address, String city,
+			String state, String zip, String f_name, String l_name) {
+		this.ms_id = ms_id;
+		this.p_id = p_id;
+		this.join_date = join_date;
+		this.mem_type = mem_type;
 		this.address = address;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.f_name = f_name;
+		this.l_name = l_name;
 	}
 
-	public int getMsid() {
-		return msid;
+	public int getMs_id() {
+		return ms_id;
 	}
 
-	public void setMsid(int msid) {
-		this.msid = msid;
+	public void setMs_id(int ms_id) {
+		this.ms_id = ms_id;
 	}
 
-	public int getPid() {
-		return pid;
+	public int getP_id() {
+		return p_id;
 	}
 
-	public void setPid(int pid) {
-		this.pid = pid;
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
 	}
 
-	public Date getJoinDate() {
-		return joinDate;
+	public Date getJoin_date() {
+		return join_date;
 	}
 
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+	public void setJoin_date(Date join_date) {
+		this.join_date = join_date;
 	}
 
-	public String getMemType() {
-		return memType;
+	public String getMem_type() {
+		return mem_type;
 	}
 
-	public void setMemType(String memType) {
-		this.memType = memType;
+	public void setMem_type(String mem_type) {
+		this.mem_type = mem_type;
 	}
 
 	public String getAddress() {
@@ -104,20 +106,19 @@ public class MembershipListDTO {
 		this.zip = zip;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getF_name() {
+		return f_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setF_name(String f_name) {
+		this.f_name = f_name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getL_name() {
+		return l_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
 	}
-
 }

@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class PersonDTO {
 		
-		int pid;
+		int p_id;
 		
-		int msid;
+		int ms_id;
 		
-		int memberType;
+		int member_type;
 		
-		String firstName;
+		String first_name;
 		
-		String lastName;
+		String last_name;
 		
 		Date birthday;
 		
@@ -26,15 +26,14 @@ public class PersonDTO {
 		
 		public PersonDTO() {
 		}
-		
-		public PersonDTO(int pid, int msid, int memberType, String firstName, String lastName, Date birthday,
+
+		public PersonDTO(int p_id, int ms_id, int member_type, String first_name, String last_name, Date birthday,
 				String occupation, String buisness, boolean isActive, String nickName) {
-			super();
-			this.pid = pid;
-			this.msid = msid;
-			this.memberType = memberType;
-			this.firstName = firstName;
-			this.lastName = lastName;
+			this.p_id = p_id;
+			this.ms_id = ms_id;
+			this.member_type = member_type;
+			this.first_name = first_name;
+			this.last_name = last_name;
 			this.birthday = birthday;
 			this.occupation = occupation;
 			this.buisness = buisness;
@@ -42,44 +41,44 @@ public class PersonDTO {
 			this.nickName = nickName;
 		}
 
-		public int getPid() {
-			return pid;
+		public int getP_id() {
+			return p_id;
 		}
 
-		public void setPid(int pid) {
-			this.pid = pid;
+		public void setP_id(int p_id) {
+			this.p_id = p_id;
 		}
 
-		public int getMsid() {
-			return msid;
+		public int getMs_id() {
+			return ms_id;
 		}
 
-		public void setMsid(int msid) {
-			this.msid = msid;
+		public void setMs_id(int ms_id) {
+			this.ms_id = ms_id;
 		}
 
-		public int getMemberType() {
-			return memberType;
+		public int getMember_type() {
+			return member_type;
 		}
 
-		public void setMemberType(int memberType) {
-			this.memberType = memberType;
+		public void setMember_type(int member_type) {
+			this.member_type = member_type;
 		}
 
-		public String getFirstName() {
-			return firstName;
+		public String getFirst_name() {
+			return first_name;
 		}
 
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
+		public void setFirst_name(String first_name) {
+			this.first_name = first_name;
 		}
 
-		public String getLastName() {
-			return lastName;
+		public String getLast_name() {
+			return last_name;
 		}
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
+		public void setLast_name(String last_name) {
+			this.last_name = last_name;
 		}
 
 		public Date getBirthday() {
@@ -121,4 +120,6 @@ public class PersonDTO {
 		public void setNickName(String nickName) {
 			this.nickName = nickName;
 		}
+		
+		
 }
