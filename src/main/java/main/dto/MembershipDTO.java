@@ -8,23 +8,25 @@ import main.model.Person;
 
 public class MembershipDTO {
 	
-	int ms_id;
+	private int ms_id;
 	
-	int p_id;
+	private int p_id;
 	
 	private Date join_date;
 	
-	String mem_type;
+	private String mem_type;
 	
-	String address;
+	private String address;
 	
-	String city;
+	private String city;
 	
-	String state;
+	private String state;
 	
-	String zip;
+	private String zip;
 	
 	private List<Person> people;
+
+	private String primaryPerson;
 
 
 	public MembershipDTO() {
@@ -42,6 +44,16 @@ public class MembershipDTO {
 		this.state = state;
 		this.zip = zip;
 		this.people = people;
+		this.primaryPerson = getPrimaryPerson(people);
+	}
+
+
+	private String getPrimaryPerson(List<Person> people) {
+		String primaryPerson = "";
+		for(Person p: people) {
+			if(p.getMember_type() == 1) primaryPerson = p.getF_name() + " " + p.getL_name();
+		}
+		return primaryPerson;
 	}
 
 
@@ -135,5 +147,13 @@ public class MembershipDTO {
 	}
 
 
+	public String getPrimaryPerson() {
+		return primaryPerson;
+	}
+
+
+	public void setPrimaryPerson(String primaryPerson) {
+		this.primaryPerson = primaryPerson;
+	}
 	
 }

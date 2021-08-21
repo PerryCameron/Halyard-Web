@@ -58,7 +58,7 @@ public class MembershipServiceImpl implements MembershipService {
 	}
 
 	@Override
-	public List<MembershipDTO> findMembershipsWithPeople() {
+	public List<MembershipDTO> findMembershipsByPersonMember_type(int member_type) {
 		List<Membership> membership = getAll();
 		List<MembershipDTO> membershipDTO = membership.stream()
 				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());

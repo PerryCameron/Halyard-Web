@@ -20,8 +20,8 @@ public interface MembershipRepository extends JpaRepository<Membership, Integer>
 	//@Query(value = "Select m.MS_ID,m.P_ID,m.JOIN_DATE,p.L_NAME,p.F_NAME,m.address,m.city,m.state,m.zip from membership m left join m.person p on p.MS_ID=m.MS_ID;", nativeQuery = true)
 	List<Membership> findMembershipsByCity(@Param("city") String city);
 
-	@Query("from Membership m left join Person p on m.ms_id=p.ms_id") 
-	List<Membership> findMembershipsWithPeople();
+	@Query("from Membership m left join Person p on m.ms_id=p.ms_id where p.member_type=1")
+	List<Membership> findMembershipsByPersonMember_type(int member_type);
 	
 
 

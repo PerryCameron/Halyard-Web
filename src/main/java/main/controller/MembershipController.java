@@ -37,8 +37,8 @@ public class MembershipController {
 
 	@GetMapping("/membershipsjson")
 	@ResponseBody
-	public List<Membership> getMembership() {
-		return membershipService.getAll();	
+	public List<MembershipDTO> getMembership() {
+		return membershipService.findMembershipsByPersonMember_type(1);	
 	}
 
 	// @GetMapping("/membertype")
