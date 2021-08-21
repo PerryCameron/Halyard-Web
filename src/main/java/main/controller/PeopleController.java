@@ -2,6 +2,7 @@ package main.controller;
 
 import java.util.List;
 
+import main.model.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.PersonDTO;
-import main.model.Person;
 import main.service.PersonService;
 
 @Controller
@@ -36,7 +36,7 @@ public class PeopleController {
 	@GetMapping("/peoplejson")
 	@ResponseBody
 
-	public List<Person> getPeople() {
+	public List<PersonEntity> getPeople() {
 		return peopleService.getAll();	
 	}
 

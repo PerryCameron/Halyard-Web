@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import main.model.MembershipEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.model.Membership;
 import main.dto.MembershipDTO;
 import main.repository.MembershipRepository;
 
@@ -18,21 +18,21 @@ public class MembershipServiceImpl implements MembershipService {
 	private MembershipRepository membershipRepository;
 	
 	@Override
-	public List<Membership> getAll() {
+	public List<MembershipEntity> getAll() {
 		return membershipRepository.findAll();
 	}
 
 	@Override
-	public Membership getById(int id) {
+	public MembershipEntity getById(int id) {
 		return membershipRepository.getById(id);
 	}
 
 	@Override
-	public void saveOrUpdate(Membership membership) {
-		if(membership.getMs_id() == 0) {
-			membership.setJoin_date(new Date());
+	public void saveOrUpdate(MembershipEntity membershipOriginal) {
+		if(membershipOriginal.getMsId() == 0) {
+			membershipOriginal.setJoinDate((java.sql.Date) new Date());
 		}
-		membershipRepository.save(membership);
+		membershipRepository.save(membershipOriginal);
 	}
 
 	@Override
@@ -42,28 +42,28 @@ public class MembershipServiceImpl implements MembershipService {
 	
 	@Override
 	public List<MembershipDTO> findMembershipsByCity(String city) {
-		List<Membership> membership = membershipRepository.findMembershipsByCity(city);
-		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+		List<MembershipEntity> membershipOriginal = membershipRepository.findMembershipsByCity(city);
+		var membershipDTO = membershipOriginal.stream()
+				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
 		return membershipDTO;
 	}
 	
 
 	@Override
 	public List<MembershipDTO> getAllDTO() {
-		List<Membership> membership = getAll();
-		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
+		List<MembershipEntity> membershipOriginal = getAll();
+		var membershipDTO = membershipOriginal.stream()
+				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
 		return membershipDTO;
 	}
 
-	@Override
-	public List<MembershipDTO> findMembershipsByPersonMember_type(int member_type) {
-		List<Membership> membership = getAll();
-		List<MembershipDTO> membershipDTO = membership.stream()
-				.map(o -> new MembershipDTO(o.getMs_id(),o.getP_id(), o.getJoin_date(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip(),o.getPeople())).collect(Collectors.toList());
-		return membershipDTO;
-	}
+//	@Override
+//	public List<MembershipDTO> findMembershipsByPersonMember_type(int member_type) {
+//		List<MembershipEntity> membershipOriginal = getAll();
+//		var membershipDTO = membershipOriginal.stream()
+//				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
+//		return membershipDTO;
+//	}
 
 	//  @Override
 	//  public List<Membership> findByMemberType(int type) {

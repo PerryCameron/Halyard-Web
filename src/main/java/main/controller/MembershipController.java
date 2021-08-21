@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.MembershipDTO;
-import main.model.Membership;
 import main.service.MembershipService;
 
 @Controller
@@ -35,11 +34,11 @@ public class MembershipController {
 	}
 	
 
-	@GetMapping("/membershipsjson")
-	@ResponseBody
-	public List<MembershipDTO> getMembership() {
-		return membershipService.findMembershipsByPersonMember_type(1);	
-	}
+//	@GetMapping("/membershipsjson")
+//	@ResponseBody
+//	public List<MembershipDTO> getMembership() {
+//		return membershipService.findMembershipsByPersonMember_type(1);
+//	}
 
 	// @GetMapping("/membertype")
 	// @ResponseBody

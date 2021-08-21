@@ -3,7 +3,7 @@ package main.dto;
 import java.util.Date;
 import java.util.List;
 
-import main.model.Person;
+import main.model.PersonEntity;
 
 
 public class MembershipDTO {
@@ -24,7 +24,7 @@ public class MembershipDTO {
 	
 	private String zip;
 	
-	private List<Person> people;
+	//private List<PersonEntity> people;
 
 	private String primaryPerson;
 
@@ -34,7 +34,8 @@ public class MembershipDTO {
 
 
 	public MembershipDTO(int ms_id, int p_id, Date join_date, String mem_type, String address, String city,
-			String state, String zip, List<Person> people) {
+		//	String state, String zip, List<PersonEntity> people) {
+		String state, String zip) {
 		this.ms_id = ms_id;
 		this.p_id = p_id;
 		this.join_date = join_date;
@@ -43,15 +44,15 @@ public class MembershipDTO {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.people = people;
-		this.primaryPerson = getPrimaryPerson(people);
+		//this.people = people;
+//		this.primaryPerson = getPrimaryPerson(people);
 	}
 
 
-	private String getPrimaryPerson(List<Person> people) {
+	private String getPrimaryPerson(List<PersonEntity> people) {
 		String primaryPerson = "";
-		for(Person p: people) {
-			if(p.getMember_type() == 1) primaryPerson = p.getF_name() + " " + p.getL_name();
+		for(PersonEntity p: people) {
+			if(p.getMemberType() == 1) primaryPerson = p.getfName() + " " + p.getlName();
 		}
 		return primaryPerson;
 	}
@@ -137,14 +138,14 @@ public class MembershipDTO {
 	}
 
 
-	public List<Person> getPeople() {
-		return people;
-	}
-
-
-	public void setPeople(List<Person> people) {
-		this.people = people;
-	}
+//	public List<PersonEntity> getPeople() {
+//		return people;
+//	}
+//
+//
+//	public void setPeople(List<PersonEntity> people) {
+//		this.people = people;
+//	}
 
 
 	public String getPrimaryPerson() {

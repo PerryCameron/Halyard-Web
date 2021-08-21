@@ -3,17 +3,17 @@ package main.service;
 import java.util.List;
 
 import main.dto.PersonDTO;
-import main.model.Person;
+import main.model.PersonEntity;
 
 public interface PersonService {
 
-	public List<Person> getAll();
+	public List<PersonEntity> getAll();
 	
-	public Person getById(int id);
+	public PersonEntity getById(int id);
 	
 	public List<PersonDTO> getByMSID(int msid);
 	
-	public void saveOrUpdate(Person person);
+	public void saveOrUpdate(PersonEntity person);
 	
 	public void delete(int id);
 	

@@ -1,125 +1,124 @@
 package main.dto;
 
+import main.model.MembershipEntity;
+
 import java.util.Date;
 
 public class PersonDTO {
-		
-		int p_id;
-		
-		int ms_id;
-		
-		int member_type;
-		
-		String first_name;
-		
-		String last_name;
-		
-		Date birthday;
-		
-		String occupation;
-		
-		String buisness;
-		
-		boolean isActive;
-		
-		String nickName;
-		
-		public PersonDTO() {
-		}
 
-		public PersonDTO(int p_id, int ms_id, int member_type, String first_name, String last_name, Date birthday,
-				String occupation, String buisness, boolean isActive, String nickName) {
-			this.p_id = p_id;
-			this.ms_id = ms_id;
-			this.member_type = member_type;
-			this.first_name = first_name;
-			this.last_name = last_name;
-			this.birthday = birthday;
-			this.occupation = occupation;
-			this.buisness = buisness;
-			this.isActive = isActive;
-			this.nickName = nickName;
-		}
+    private int p_id;
 
-		public int getP_id() {
-			return p_id;
-		}
+    private int member_type;
 
-		public void setP_id(int p_id) {
-			this.p_id = p_id;
-		}
+    private String first_name;
 
-		public int getMs_id() {
-			return ms_id;
-		}
+    private String last_name;
 
-		public void setMs_id(int ms_id) {
-			this.ms_id = ms_id;
-		}
+    private Date birthday;
 
-		public int getMember_type() {
-			return member_type;
-		}
+    private String occupation;
 
-		public void setMember_type(int member_type) {
-			this.member_type = member_type;
-		}
+    private String buisness;
 
-		public String getFirst_name() {
-			return first_name;
-		}
+    private boolean isActive;
 
-		public void setFirst_name(String first_name) {
-			this.first_name = first_name;
-		}
+    private String nickName;
 
-		public String getLast_name() {
-			return last_name;
-		}
+    private MembershipEntity membershipByMsId;
 
-		public void setLast_name(String last_name) {
-			this.last_name = last_name;
-		}
+    public PersonDTO() {
+    }
 
-		public Date getBirthday() {
-			return birthday;
-		}
+    public PersonDTO(int p_id, int member_type, String first_name, String last_name, Date birthday,
+                     String occupation, String buisness, boolean isActive, String nickName, MembershipEntity membershipByMsId) {
+        this.p_id = p_id;
+        this.member_type = member_type;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.birthday = birthday;
+        this.occupation = occupation;
+        this.buisness = buisness;
+        this.isActive = isActive;
+        this.nickName = nickName;
+    }
 
-		public void setBirthday(Date birthday) {
-			this.birthday = birthday;
-		}
+    public int getP_id() {
+        return p_id;
+    }
 
-		public String getOccupation() {
-			return occupation;
-		}
+    public void setP_id(int p_id) {
+        this.p_id = p_id;
+    }
 
-		public void setOccupation(String occupation) {
-			this.occupation = occupation;
-		}
+    public int getMember_type() {
+        return member_type;
+    }
 
-		public String getBuisness() {
-			return buisness;
-		}
+    public void setMember_type(int member_type) {
+        this.member_type = member_type;
+    }
 
-		public void setBuisness(String buisness) {
-			this.buisness = buisness;
-		}
+    public String getFirst_name() {
+        return first_name;
+    }
 
-		public boolean isActive() {
-			return isActive;
-		}
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
 
-		public void setActive(boolean isActive) {
-			this.isActive = isActive;
-		}
+    public String getLast_name() {
+        return last_name;
+    }
 
-		public String getNickName() {
-			return nickName;
-		}
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
 
-		public void setNickName(String nickName) {
-			this.nickName = nickName;
-		}
-		
-		
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getBuisness() {
+        return buisness;
+    }
+
+    public void setBuisness(String buisness) {
+        this.buisness = buisness;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public MembershipEntity getMembershipByMsId() {
+        return membershipByMsId;
+    }
+
+    public void setMembershipByMsId(MembershipEntity membershipByMsId) {
+        this.membershipByMsId = membershipByMsId;
+    }
 }
