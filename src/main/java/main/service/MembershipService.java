@@ -3,11 +3,14 @@ package main.service;
 import java.util.List;
 
 import main.dto.MembershipDTO;
+import main.dto.MembershipIdDTO;
 import main.model.MembershipEntity;
+import main.model.MembershipIdEntity;
 
 public interface MembershipService {
-
 	List<MembershipEntity> getAll();
+
+	List<MembershipIdEntity> getAllMembershipId();
 
 	MembershipEntity getById(int id);
 	
@@ -19,6 +22,6 @@ public interface MembershipService {
 	
 	List<MembershipDTO> findMembershipsByCity(String city);
 	
-//	List<MembershipDTO> findMembershipsByPersonMember_type(int member_type);
+	List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear);
 	// public List<Membership> findByMemberType(int type);
 }

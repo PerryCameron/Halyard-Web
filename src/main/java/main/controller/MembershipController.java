@@ -2,6 +2,7 @@ package main.controller;
 
 import java.util.List;
 
+import main.dto.MembershipIdDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class MembershipController {
 	private MembershipService membershipService;
 
 
+
 	@GetMapping("/")
 	public String getHomePage(Model model) {
 		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
@@ -34,11 +36,11 @@ public class MembershipController {
 	}
 	
 
-//	@GetMapping("/membershipsjson")
-//	@ResponseBody
-//	public List<MembershipDTO> getMembership() {
-//		return membershipService.findMembershipsByPersonMember_type(1);
-//	}
+	@GetMapping("/membershipsjson")
+	@ResponseBody
+	public List<MembershipIdDTO> getMembership() {
+		return membershipService.findMembershipIdEntityByFiscalYear(2021);
+	}
 
 	// @GetMapping("/membertype")
 	// @ResponseBody

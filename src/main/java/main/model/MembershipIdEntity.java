@@ -3,7 +3,7 @@ package main.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "membership_id", schema = "ECSC_SQL", catalog = "")
+@Table(name = "membership_id", schema = "ECSC_SQL")
 public class MembershipIdEntity {
     private int mid;
     private int fiscalYear;
