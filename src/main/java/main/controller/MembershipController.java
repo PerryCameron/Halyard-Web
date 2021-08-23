@@ -34,14 +34,26 @@ public class MembershipController {
 		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
 		return "index";
 	}
+
+	@GetMapping("membership/all/{year}")
+	public String getAllMembershipsByYear(Model model, @PathVariable int year) {
+		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, "memberhsipid");
+		model.addAttribute("membershipIdDTO", membershipIdDTO);
+		return "memberships";
+	}
 	
 
-	@GetMapping("/membershipsjson")
+	@GetMapping("/membershipidjson")
 	@ResponseBody
-	public List<MembershipIdDTO> getMembership() {
-		return membershipService.findMembershipIdEntityByFiscalYear(2021);
+	public List<MembershipIdDTO> getMembershipId() {
+		return membershipService.findMembershipIdEntityByFiscalYear(2021, "membershipid");
 	}
 
+	@GetMapping("/membershipjson")
+	@ResponseBody
+	public List<MembershipDTO> getMembership() {
+		return membershipService.getAllDTO();
+	}
 	// @GetMapping("/membertype")
 	// @ResponseBody
 	// public List<Membership> getMembershipWithPrimary() {

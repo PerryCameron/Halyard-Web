@@ -2,6 +2,7 @@ package main.dto;
 
 import main.model.PersonEntity;
 
+import javax.persistence.OrderBy;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class MembershipIdDTO {
 
 	private int fiscalYear;
 
+	@OrderBy
 	private int membershipId;
 
 	private Boolean renew;

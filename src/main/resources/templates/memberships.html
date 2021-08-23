@@ -1,3 +1,8 @@
+<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
+<!--@thymesVar id="post" type="your.package.Post"-->
+<!--@thymesVar id="title" type="String"-->
+<!--@thymesVar id="content" type="String"-->
+<!--*/-->
 
 <div th:replace="fragments/header :: head"></div>
 <div th:replace="fragments/topnav :: navbar"></div>
@@ -12,10 +17,10 @@
 		</div>
 		
 		<div class="row">
-			<table class="table table-hover" th:if="${!membershipJoinDTO.empty}">
+			<table class="table table-hover" th:if="${!membershipIdDTO.empty}">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
+						<th scope="col"><a href="2000">ID #</a></th>
 						<th scope="col">Primary</th>
 						<th scope="col">Join Date</th>
 						<th scope="col">Type</th>
@@ -26,15 +31,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="membershipJoinDTO : ${membershipJoinDTO}">
-						<td th:text="${membershipJoinDTO.msid}"></td>					
-						<td th:text="${membershipJoinDTO.l_name}"></td>
-						<td th:text="${#dates.format(membershipJoinDTO.joinDate, 'dd-MMM-yyyy')}"></td>
-						<td th:text="${membershipJoinDTO.memType}"></td>
-						<td th:text="${membershipJoinDTO.address}"></td>
-						<td th:text="${membershipJoinDTO.city}"></td>
-						<td th:text="${membershipJoinDTO.state}"></td>
-						<td th:text="${membershipJoinDTO.zip}"></td>
+					<tr th:each="membershipIdDTO : ${membershipIdDTO}">
+						<td th:text="${membershipIdDTO.membershipId}"></td>
+						<td th:text="${membershipIdDTO.p_id}"></td>
+						<td th:text="${#dates.format(membershipIdDTO.join_date, 'dd-MMM-yyyy')}"></td>
+						<td th:text="${membershipIdDTO.memType}"></td>
+						<td th:text="${membershipIdDTO.address}"></td>
+						<td th:text="${membershipIdDTO.city}"></td>
+						<td th:text="${membershipIdDTO.state}"></td>
+						<td th:text="${membershipIdDTO.zip}"></td>
 						<td><a type="button" class="btn btn-primary" href="/">Edit</a></td>
 <!-- 						<td><a class="btn btn-primary" th:if="${offerDTO.id} &gt; 0" th:href="@{/editOffer/} + ${offerDTO.id}">Edit</a></td>
 						<td><a class="btn btn-danger" th:if="${offerDTO.id} &gt; 0" th:href="@{/deleteOffer/} + ${offerDTO.id}">Delete</a></td>

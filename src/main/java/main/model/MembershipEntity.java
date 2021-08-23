@@ -2,6 +2,8 @@ package main.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +17,7 @@ public class MembershipEntity {
     private String city;
     private String state;
     private String zip;
+    private Collection<PersonEntity> personByPId;
 
     @Id
     @Column(name = "MS_ID")
@@ -124,5 +127,16 @@ public class MembershipEntity {
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (zip != null ? zip.hashCode() : 0);
         return result;
+    }
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "membershipByMsId")
+    public Collection<PersonEntity> getPersonByPId() {
+        return personByPId;
+    }
+
+    public void setPersonByPId(Collection<PersonEntity> personByPId) {
+        this.personByPId = personByPId;
     }
 }
