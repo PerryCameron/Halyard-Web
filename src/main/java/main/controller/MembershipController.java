@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.dto.MembershipDTO;
@@ -41,7 +42,13 @@ public class MembershipController {
 		model.addAttribute("membershipIdDTO", membershipIdDTO);
 		return "memberships";
 	}
-	
+
+	@GetMapping("membership")
+	public String getAllMembershipsByYearSorted(Model model, @RequestParam int year, @RequestParam String sort) {
+		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, sort);
+		model.addAttribute("membershipIdDTO", membershipIdDTO);
+		return "memberships";
+	}
 
 	@GetMapping("/membershipidjson")
 	@ResponseBody
