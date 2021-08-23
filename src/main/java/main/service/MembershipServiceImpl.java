@@ -61,12 +61,12 @@ public class MembershipServiceImpl implements MembershipService {
 	}
 
 	@Override
-	public List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, String sort) {
+	public List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, boolean renew, String sort) {
 		List<MembershipIdEntity> membershipIdEntity;
 		if(sort.equals("city")) {
-			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYearOByCity(fiscalYear);
+			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYearOByCity(fiscalYear, renew);
 		} else {
-			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYear(fiscalYear);
+			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYear(fiscalYear, renew);
 		}
 		var membershipListDTO = membershipIdEntity.stream().map(o -> new MembershipIdDTO(o.getMid(),o.getFiscalYear(),
 				o.getMembershipId(),o.getRenew(),o.getMemType(),o.getSelected(),o.getMembershipByMsId().getMsId(),o.getMembershipByMsId().getpId(),

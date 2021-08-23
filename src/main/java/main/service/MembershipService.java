@@ -22,6 +22,6 @@ public interface MembershipService {
 	
 	List<MembershipDTO> findMembershipsByCity(String city);
 	
-	List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, String sort);
+	List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, boolean renew, String sort);
 	// public List<Membership> findByMemberType(int type);
 }

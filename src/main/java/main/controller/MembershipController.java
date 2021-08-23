@@ -38,14 +38,14 @@ public class MembershipController {
 
 	@GetMapping("membership/all/{year}")
 	public String getAllMembershipsByYear(Model model, @PathVariable int year) {
-		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, "memberhsipid");
+		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, true,"memberhsipid");
 		model.addAttribute("membershipIdDTO", membershipIdDTO);
 		return "memberships";
 	}
 
 	@GetMapping("membership")
-	public String getAllMembershipsByYearSorted(Model model, @RequestParam int year, @RequestParam String sort) {
-		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, sort);
+	public String getAllMembershipsByYearSorted(Model model, @RequestParam int year, @RequestParam boolean renew, @RequestParam String sort) {
+		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, renew, sort);
 		model.addAttribute("membershipIdDTO", membershipIdDTO);
 		return "memberships";
 	}
@@ -53,7 +53,7 @@ public class MembershipController {
 	@GetMapping("/membershipidjson")
 	@ResponseBody
 	public List<MembershipIdDTO> getMembershipId() {
-		return membershipService.findMembershipIdEntityByFiscalYear(2021, "membershipid");
+		return membershipService.findMembershipIdEntityByFiscalYear(2021, true,"membershipid");
 	}
 
 	@GetMapping("/membershipjson")
