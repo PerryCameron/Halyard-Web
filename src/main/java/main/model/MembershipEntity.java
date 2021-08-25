@@ -131,7 +131,7 @@ public class MembershipEntity {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "membershipByMsId")
+    @OneToMany(mappedBy = "membershipByMsId", fetch = FetchType.LAZY)
     public Collection<PersonEntity> getPersonByPId() {
         return personByPId;
     }

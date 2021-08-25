@@ -156,7 +156,7 @@ public class PersonEntity {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MS_ID", referencedColumnName = "MS_ID")
     public MembershipEntity getMembershipByMsId() {
         return membershipByMsId;
