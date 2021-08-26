@@ -4,6 +4,7 @@ import java.util.List;
 
 import main.dto.MembershipDTO;
 import main.dto.MembershipIdDTO;
+import main.dto.MembershipListDTO;
 import main.model.MembershipEntity;
 import main.model.MembershipIdEntity;
 
@@ -24,4 +25,5 @@ public interface MembershipService {
 	
 	List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, boolean renew, String sort);
 	// public List<Membership> findByMemberType(int type);
+	List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(int fiscal_year, boolean renew, int memberType);
 }

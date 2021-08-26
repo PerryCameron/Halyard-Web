@@ -3,6 +3,7 @@ package main.controller;
 import java.util.List;
 
 import main.dto.MembershipIdDTO;
+import main.dto.MembershipListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +44,27 @@ public class MembershipController {
 		return "memberships";
 	}
 
+//	@GetMapping("membership")
+//	public String getAllMembershipsByYearSorted(Model model, @RequestParam int year, @RequestParam boolean renew, @RequestParam String sort) {
+//		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, renew, sort);
+//		model.addAttribute("membershipIdDTO", membershipIdDTO);
+//		return "memberships";
+//	}
+
 	@GetMapping("membership")
-	public String getAllMembershipsByYearSorted(Model model, @RequestParam int year, @RequestParam boolean renew, @RequestParam String sort) {
-		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipIdEntityByFiscalYear(year, renew, sort);
-		model.addAttribute("membershipIdDTO", membershipIdDTO);
+	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam boolean renew) {
+		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(year, renew, 1);
+		model.addAttribute("membershipListDTO", membershipListDTO);
 		return "memberships";
+	}
+
+	@GetMapping("/membershiplistjson")
+	@ResponseBody
+	public List<MembershipListDTO> getMembershipList() {
+		List<MembershipListDTO>	theList = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(2021, true, 1);
+		System.out.println(theList.size());
+	return theList;
+
 	}
 
 	@GetMapping("/membershipidjson")
@@ -61,53 +78,8 @@ public class MembershipController {
 	public List<MembershipDTO> getMembership() {
 		return membershipService.getAllDTO();
 	}
-	// @GetMapping("/membertype")
-	// @ResponseBody
-	// public List<Membership> getMembershipWithPrimary() {
-	// 	return membershipService.findByMemberType(1);	
-	// }
+
 	
-//	@GetMapping("/")
-//	public String getHomePage(Model model) {
-//		List<OfferDTO> offersDTO = membershipService.getAllDTO();
-//		model.addAttribute("offersDTO", offersDTO);
-//		return "index";
-//	}
-//	
-//	@GetMapping("/addOffer")
-//	public String showForm(Model model) {
-//		Offer offer = new Offer();
-//		model.addAttribute("offer", offer);
-//		return "offer-form";
-//	}
-//	
-//	@PostMapping("/processForm")
-//	public String processOffer(@ModelAttribute Offer offer) {
-//		membershipService.saveOrUpdate(offer);
-//		return "redirect:/";
-//	}
-//	
-//	@GetMapping("/deleteOffer/{id}")
-//	public String deleteOffer(@PathVariable int id) {
-//		if (id > 0) {
-//			Offer offer = membershipService.getById(id);
-//			if(offer != null) {
-//				membershipService.delete(id);
-//			}
-//		}
-//		return "redirect:/";
-//	}
-//	
-//	@GetMapping("/editOffer/{id}")
-//	public String editOfferString(@PathVariable int id, Model model) {
-//		if(id > 0) {
-//			Offer offer = membershipService.getById(id);
-//			if(offer != null) {
-//				model.addAttribute("offer", offer);
-//				return "offer-form";
-//			}
-//		}
-//		return "redirect:/";
-//	}
+
 
 }
