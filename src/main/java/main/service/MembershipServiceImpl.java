@@ -57,29 +57,7 @@ public class MembershipServiceImpl implements MembershipService {
 	public void delete(int id) {
 		membershipRepository.deleteById(id);
 	}
-	
-	@Override
-	public List<MembershipDTO> findMembershipsByCity(String city) {
-		List<MembershipEntity> membershipEntity = membershipRepository.findMembershipsByCity(city);
-		var membershipDTO = membershipEntity.stream()
-				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
-		return membershipDTO;
-	}
 
-	@Override
-	public List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, boolean renew, String sort) {
-		List<MembershipIdEntity> membershipIdEntity;
-		if(sort.equals("city")) {
-			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYearOByCity(fiscalYear, renew);
-		} else {
-			membershipIdEntity = membershipIdRepository.findMembershipIdEntityByFiscalYear(fiscalYear, renew);
-		}
-		var membershipListDTO = membershipIdEntity.stream().map(o -> new MembershipIdDTO(o.getMid(),o.getFiscalYear(),
-				o.getMembershipId(),o.getRenew(),o.getMemType(),o.getSelected(),o.getMembershipByMsId().getMsId(),o.getMembershipByMsId().getpId(),
-				o.getMembershipByMsId().getJoinDate(),o.getMembershipByMsId().getAddress(),o.getMembershipByMsId().getCity(),o.getMembershipByMsId().getState(),
-				o.getMembershipByMsId().getZip())).collect(Collectors.toList());
-		return membershipListDTO;
-	}
 
 	@Override
 	public List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(int fiscal_year, boolean renew, int memberType) {

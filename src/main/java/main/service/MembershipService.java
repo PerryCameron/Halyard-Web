@@ -20,10 +20,5 @@ public interface MembershipService {
 	void delete(int id);
 	
 	List<MembershipDTO> getAllDTO();
-	
-	List<MembershipDTO> findMembershipsByCity(String city);
-	
-	List<MembershipIdDTO> findMembershipIdEntityByFiscalYear(int fiscalYear, boolean renew, String sort);
-	// public List<Membership> findByMemberType(int type);
 	List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(int fiscal_year, boolean renew, int memberType);
 }
