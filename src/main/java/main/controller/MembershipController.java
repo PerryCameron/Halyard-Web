@@ -2,13 +2,11 @@ package main.controller;
 
 import java.util.List;
 
-import main.dto.MembershipIdDTO;
 import main.dto.MembershipListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,16 +29,17 @@ public class MembershipController {
 	}
 
 	@GetMapping("membership")
-	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam boolean renew) {
-		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(year, renew, 1);
+	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam boolean renew, @RequestParam String sort) {
+		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberType(year, renew, 1, sort);
 		model.addAttribute("membershipListDTO", membershipListDTO);
 		return "memberships";
 	}
 
+	// for testing params
 	@GetMapping("/membershiplistjson")
 	@ResponseBody
 	public List<MembershipListDTO> getMembershipList() {
-		List<MembershipListDTO>	theList = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(2021, true, 1);
+		List<MembershipListDTO>	theList = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberType(2021, true, 1, "byId");
 		System.out.println(theList.size());
 	return theList;
 

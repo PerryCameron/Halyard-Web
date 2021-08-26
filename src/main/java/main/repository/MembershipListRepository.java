@@ -13,13 +13,6 @@ import java.util.List;
 @Transactional
 public interface MembershipListRepository extends JpaRepository<MembershipListEntity, Integer> {
 
-	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(int fiscal_year, boolean renew, int memberType);
-
-//	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByFName(int fiscal_year, boolean renew, int memberType);
-//
-//	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByLName(int fiscal_year, boolean renew, int memberType);
-//
-//	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMemberType(int fiscal_year, boolean renew, int memberType);
-
+	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberType(int fiscal_year, boolean renew, int memberType);
 
 }

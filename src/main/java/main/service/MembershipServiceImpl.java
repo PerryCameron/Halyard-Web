@@ -1,11 +1,10 @@
 package main.service;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import main.dto.MembershipIdDTO;
 import main.dto.MembershipListDTO;
 import main.model.MembershipEntity;
 import main.model.MembershipIdEntity;
@@ -60,12 +59,30 @@ public class MembershipServiceImpl implements MembershipService {
 
 
 	@Override
-	public List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(int fiscal_year, boolean renew, int memberType) {
+	public List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberType(int fiscal_year, boolean renew, int memberType, String sort) {
 		List<MembershipListEntity> membershipListEntities;
-		membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndRenewAndMemberTypeOrderByMembershipId(fiscal_year,renew,memberType);
+		membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndRenewAndMemberType(fiscal_year,renew,memberType);
 		var membershipListDTO = membershipListEntities.stream().map(o -> new MembershipListDTO(o.getMsId(),o.getMembershipId(),
 				o.getJoinDate(), o.getfName(), o.getlName(), o.getMemType(), o.getAddress(),o.getCity(),o.getState(),o.getZip())).collect(Collectors.toList());
-		return membershipListDTO;
+		return sortList(membershipListDTO, sort);
+	}
+
+
+	private List<MembershipListDTO> sortList(List<MembershipListDTO> l, String sort) {
+		if(sort.equals("fname")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getFname));
+		} else if (sort.equals("lname")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getLname));
+		} else if (sort.equals("type")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getMem_type));
+		} else if (sort.equals("jdate")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getMem_type));
+		} else if (sort.equals("city")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getCity));
+		} else {
+			l.sort(Comparator.comparing(MembershipListDTO::getMembership_id));
+		}
+		return l;
 	}
 
 
@@ -76,8 +93,4 @@ public class MembershipServiceImpl implements MembershipService {
 				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
 		return membershipDTO;
 	}
-
-	// This is the full Query I need
-	// select id.membershipId ,m,p.fName,p.lName, id.memType from MembershipEntity m inner join MembershipIdEntity id on m.msId=id.membershipByMsId.msId inner join PersonEntity p on m.msId=p.membershipByMsId.msId where id.fiscalYear=2021 and id.renew=true and p.memberType=1
-
 }
