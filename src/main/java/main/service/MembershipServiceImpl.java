@@ -75,10 +75,16 @@ public class MembershipServiceImpl implements MembershipService {
 			l.sort(Comparator.comparing(MembershipListDTO::getLname));
 		} else if (sort.equals("type")) {
 			l.sort(Comparator.comparing(MembershipListDTO::getMem_type));
-		} else if (sort.equals("jdate")) {
-			l.sort(Comparator.comparing(MembershipListDTO::getMem_type));
+		} else if (sort.equals("date")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getJoin_date));
+		} else if (sort.equals("adrs")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getAddress));
 		} else if (sort.equals("city")) {
 			l.sort(Comparator.comparing(MembershipListDTO::getCity));
+		} else if (sort.equals("state")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getState));
+		} else if (sort.equals("zip")) {
+			l.sort(Comparator.comparing(MembershipListDTO::getZip));
 		} else {
 			l.sort(Comparator.comparing(MembershipListDTO::getMembership_id));
 		}

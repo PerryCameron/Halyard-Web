@@ -26,7 +26,3 @@ function setGetParameter(paramName, paramValue)
     window.location.href = url + hash;
 }
 
-function testParameter()
-{
-    console.log("this worked")
-}
