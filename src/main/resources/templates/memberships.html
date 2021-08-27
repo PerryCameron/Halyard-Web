@@ -6,18 +6,19 @@
 
 <div th:replace="fragments/header :: head"></div>
 <div th:replace="fragments/topnav :: navbar"></div>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col">
 				<h1>Memberships</h1>
+				273 Records
 			</div>
 		</div>
 
 		
 		<div class="table-responsive">
-			<table class="table table-hover table-striped w-auto w-100"  th:if="${!membershipListDTO.empty}">
+			<table class="table table-hover table-striped w-auto w-100 d-block d-md-table table-bordered"  th:if="${!membershipListDTO.empty}">
 				<thead>
-					<tr>
+					<tr class="table-warning">
 						<th scope="col"><a href="javascript:void(0)" onclick="setGetParameter('sort', 'byId')">ID</a></th>
 						<th scope="col"><a href="javascript:void(0)" onclick="setGetParameter('sort', 'fname')">First Name</a></th>
 						<th scope="col"><a href="javascript:void(0)" onclick="setGetParameter('sort', 'lname')">Last Name</a></th>
@@ -41,7 +42,7 @@
 						<td th:text="${membershipListDTO.city}"></td>
 						<td th:text="${membershipListDTO.state}"></td>
 						<td th:text="${membershipListDTO.zip}"></td>
-						<td><a type="button" class="btn btn-primary" href="/">Edit</a></td>
+						<td><a type="button" class="btn btn-primary" href="/">View</a></td>
 <!-- 						<td><a class="btn btn-primary" th:if="${offerDTO.id} &gt; 0" th:href="@{/editOffer/} + ${offerDTO.id}">Edit</a></td>
 						<td><a class="btn btn-danger" th:if="${offerDTO.id} &gt; 0" th:href="@{/deleteOffer/} + ${offerDTO.id}">Delete</a></td>
  -->					</tr>
