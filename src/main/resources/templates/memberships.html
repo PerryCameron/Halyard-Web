@@ -10,6 +10,28 @@
 		<div class="row">
 			<div class="col">
 				<h1>Memberships</h1>
+				<select id='date-dropdown'></select>
+				<script>
+					let dateDropdown = document.getElementById('date-dropdown');
+					let currentYear = new Date().getFullYear();
+					let earliestYear = 1970;
+					while (currentYear >= earliestYear) {
+						let dateOption = document.createElement('option');
+						dateOption.text = currentYear;
+						dateOption.value = currentYear;
+						dateDropdown.add(dateOption);
+						currentYear -= 1;
+					}
+					document.getElementById('date-dropdown').addEventListener('change', function() {
+						setGetParameter('year', this.value);
+					});
+					const queryString = window.location.search;
+					const urlParams = new URLSearchParams(queryString);
+					const product = urlParams.get('year');
+					dateDropdown.value = product;
+				console.log(product);
+				</script>
+
 				&nbsp;&nbsp;<span th:text="${#lists.size(membershipListDTO)}"></span> Records
 			</div>
 		</div>
@@ -49,9 +71,7 @@
 				</tbody>
 			</table>
 		</div>
-		
-<!-- 		<div class="row" th:if="${offersDTO.empty}">
-			<h3>No tours in the offer</h3>
-		</div> -->
+
+
 	</div>
 <div th:replace="fragments/footer :: foot"></div>

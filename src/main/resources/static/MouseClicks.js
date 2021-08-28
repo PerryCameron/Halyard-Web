@@ -1,9 +1,6 @@
-/**
- * http://stackoverflow.com/a/10997390/11236
- */
+
 function setGetParameter(paramName, paramValue)
 {
-    console.log("function is being called");
     var url = window.location.href;
     var hash = location.hash;
     url = url.replace(hash, '');
@@ -26,3 +23,10 @@ function setGetParameter(paramName, paramValue)
     window.location.href = url + hash;
 }
 
+function getParameter()
+{
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const product = urlParams.get('year');
+    return product;
+}
