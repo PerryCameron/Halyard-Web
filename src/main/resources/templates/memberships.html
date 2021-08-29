@@ -8,8 +8,8 @@
 <div th:replace="fragments/topnav :: navbar"></div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col">
-				<h1>Memberships</h1>
+			<div class="col bg-secondary">
+				<h1>Rosters</h1>
 				<select id='date-dropdown'></select>
 				<script>
 					let dateDropdown = document.getElementById('date-dropdown');
@@ -34,6 +34,26 @@
 
 				&nbsp;&nbsp;<span th:text="${#lists.size(membershipListDTO)}"></span> Records
 			</div>
+			<div class="col bg-success">
+
+				<input type="radio" id="active" name="roster" value="true">
+				<label for="active">Active</label><br>
+				<input type="radio" id="nonactive" name="roster" value="false">
+				<label for="nonactive">Non-Renew</label><br>
+				<input type="radio" id="newmember" name="roster" value="new">
+				<label for="newmember">New Members</label>
+				<script>
+					document.addEventListener("click", evt => {
+						console.clear();
+						//  event delegation: only act if the click originated from input[type=radio]
+						if (evt.target.type === "radio") {
+							console.log(`Value: ${evt.target.value}, text: ${document.querySelector(`label[for='${evt.target.id}']`).textContent}`);
+						}
+					})
+				</script>
+			</div>
+			<div class="col bg-danger">Lets put other stuff in here</div>
+			<div class="col bg-info">Lets put other stuff in here</div>
 		</div>
 
 
