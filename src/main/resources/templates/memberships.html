@@ -8,9 +8,12 @@
 <div th:replace="fragments/topnav :: navbar"></div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col bg-secondary">
-				<h1>Rosters</h1>
-				<select id='date-dropdown'></select>
+			<div class="col">
+				<h1><span class="fi fi-rr-book-alt"> Rosters</span></h1>
+				&nbsp;&nbsp;
+				<span th:text="${#lists.size(membershipListDTO)}"></span> Records
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select id='date-dropdown' class="btn-lg btn-outline-info"></select>
 				<script>
 					let dateDropdown = document.getElementById('date-dropdown');
 					let currentYear = new Date().getFullYear();
@@ -32,28 +35,38 @@
 				console.log(product);
 				</script>
 
-				&nbsp;&nbsp;<span th:text="${#lists.size(membershipListDTO)}"></span> Records
+				&nbsp;&nbsp;
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-info active btn-rounded">
+						<input type="radio" name="options" id="option1" autocomplete="off" value="active" checked><span class="fi fi-rr-apps-add"> Active</span>
+					</label>
+					<label class="btn btn-info">
+						<input type="radio" name="options" id="option2" autocomplete="off" value="nonrenu"> <span class="fi fi-rr-cross-circle"> Non-Renew</span>
+					</label>
+					<label class="btn btn-info">
+						<input type="radio" name="options" id="option3" autocomplete="off" value="all"> <span class="fi fi-rr-asterisk"> All</span>
+					</label>
+					<label class="btn btn-info">
+						<input type="radio" name="options" id="option4" autocomplete="off" value="new"> <span class="fi fi-rr-plus"> New Members</span>
+					</label>
+					<label class="btn btn-info">
+						<input type="radio" name="options" id="option5" autocomplete="off" value="return"> <span class="fi fi-rr-rotate-right"> Return Members</span>
+					</label>
+					<label class="btn btn-info">
+						<input type="radio" name="options" id="option6" autocomplete="off" value="late"> <span class="fi fi-rr-time-delete"> Late Dues</span>
+					</label>
+					<script>
+						document.addEventListener("click", evt => {
+							console.clear();
+							//  event delegation: only act if the click originated from input[type=radio]
+							if (evt.target.type === "radio") {
+								console.log(`Value: ${evt.target.value}, text: ${document.querySelector(`label[for='${evt.target.id}']`).textContent}`);
+							}
+						})
+					</script>
+				</div>
 			</div>
-			<div class="col bg-success">
 
-				<input type="radio" id="active" name="roster" value="true">
-				<label for="active">Active</label><br>
-				<input type="radio" id="nonactive" name="roster" value="false">
-				<label for="nonactive">Non-Renew</label><br>
-				<input type="radio" id="newmember" name="roster" value="new">
-				<label for="newmember">New Members</label>
-				<script>
-					document.addEventListener("click", evt => {
-						console.clear();
-						//  event delegation: only act if the click originated from input[type=radio]
-						if (evt.target.type === "radio") {
-							console.log(`Value: ${evt.target.value}, text: ${document.querySelector(`label[for='${evt.target.id}']`).textContent}`);
-						}
-					})
-				</script>
-			</div>
-			<div class="col bg-danger">Lets put other stuff in here</div>
-			<div class="col bg-info">Lets put other stuff in here</div>
 		</div>
 
 
