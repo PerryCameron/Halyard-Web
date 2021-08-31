@@ -6,73 +6,71 @@
 
 <div th:replace="fragments/header :: head"></div>
 <div th:replace="fragments/topnav :: navbar"></div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col">
-				<h1><span class="fi fi-rr-book-alt"> Rosters</span></h1>
-				&nbsp;&nbsp;
-				<span th:text="${#lists.size(membershipListDTO)}"></span> Records
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<select id='date-dropdown' class="btn-lg btn-outline-info"></select>
-				<script>
-					let dateDropdown = document.getElementById('date-dropdown');
-					let currentYear = new Date().getFullYear();
-					let earliestYear = 1970;
-					while (currentYear >= earliestYear) {
-						let dateOption = document.createElement('option');
-						dateOption.text = currentYear;
-						dateOption.value = currentYear;
-						dateDropdown.add(dateOption);
-						currentYear -= 1;
-					}
-					document.getElementById('date-dropdown').addEventListener('change', function() {
-						setGetParameter('year', this.value);
-					});
-					const queryString = window.location.search;
-					const urlParams = new URLSearchParams(queryString);
-					const product = urlParams.get('year');
-					dateDropdown.value = product;
-				console.log(product);
-				</script>
-
-				&nbsp;&nbsp;
-				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-					<label class="btn btn-info active btn-rounded">
-						<input type="radio" name="options" id="option1" autocomplete="off" value="active" checked><span class="fi fi-rr-apps-add"> Active</span>
-					</label>
-					<label class="btn btn-info">
-						<input type="radio" name="options" id="option2" autocomplete="off" value="nonrenu"> <span class="fi fi-rr-cross-circle"> Non-Renew</span>
-					</label>
-					<label class="btn btn-info">
-						<input type="radio" name="options" id="option3" autocomplete="off" value="all"> <span class="fi fi-rr-asterisk"> All</span>
-					</label>
-					<label class="btn btn-info">
-						<input type="radio" name="options" id="option4" autocomplete="off" value="new"> <span class="fi fi-rr-plus"> New Members</span>
-					</label>
-					<label class="btn btn-info">
-						<input type="radio" name="options" id="option5" autocomplete="off" value="return"> <span class="fi fi-rr-rotate-right"> Return Members</span>
-					</label>
-					<label class="btn btn-info">
-						<input type="radio" name="options" id="option6" autocomplete="off" value="late"> <span class="fi fi-rr-time-delete"> Late Dues</span>
-					</label>
-					<script>
-						document.addEventListener("click", evt => {
-							console.clear();
-							//  event delegation: only act if the click originated from input[type=radio]
-							if (evt.target.type === "radio") {
-								console.log(`Value: ${evt.target.value}, text: ${document.querySelector(`label[for='${evt.target.id}']`).textContent}`);
-							}
-						})
-					</script>
-				</div>
-			</div>
-
-		</div>
 
 
 		<div class="table-responsive">
 			<table class="table table-hover table-striped w-auto w-100 d-block d-md-table table-bordered"  th:if="${!membershipListDTO.empty}">
 				<thead>
+				<tr>
+					<td colspan="10">
+						<h1><span class="fi fi-rr-book-alt"> Rosters</span></h1>
+						&nbsp;&nbsp;
+						<span th:text="${#lists.size(membershipListDTO)}"></span> Records
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<select id='date-dropdown' class="btn-lg btn-outline-info"></select>
+						<script>
+							let dateDropdown = document.getElementById('date-dropdown');
+							let currentYear = new Date().getFullYear();
+							let earliestYear = 1970;
+							while (currentYear >= earliestYear) {
+								let dateOption = document.createElement('option');
+								dateOption.text = currentYear;
+								dateOption.value = currentYear;
+								dateDropdown.add(dateOption);
+								currentYear -= 1;
+							}
+							document.getElementById('date-dropdown').addEventListener('change', function() {
+								setGetParameter('year', this.value);
+							});
+							const queryString = window.location.search;
+							const urlParams = new URLSearchParams(queryString);
+							const product = urlParams.get('year');
+							dateDropdown.value = product;
+							console.log(product);
+						</script>
+
+						&nbsp;&nbsp;
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-info active">
+								<input type="radio" name="options" id="option1" autocomplete="off" value="active" checked><span class="fi fi-rr-apps-add"> Active</span>
+							</label>
+							<label class="btn btn-info">
+								<input type="radio" name="options" id="option2" autocomplete="off" value="nonrenu"> <span class="fi fi-rr-cross-circle"> Non-Renew</span>
+							</label>
+							<label class="btn btn-info">
+								<input type="radio" name="options" id="option3" autocomplete="off" value="all"> <span class="fi fi-rr-asterisk"> All</span>
+							</label>
+							<label class="btn btn-info">
+								<input type="radio" name="options" id="option4" autocomplete="off" value="new"> <span class="fi fi-rr-plus"> New Members</span>
+							</label>
+							<label class="btn btn-info">
+								<input type="radio" name="options" id="option5" autocomplete="off" value="return"> <span class="fi fi-rr-rotate-right"> Return Members</span>
+							</label>
+							<label class="btn btn-info">
+								<input type="radio" name="options" id="option6" autocomplete="off" value="late"> <span class="fi fi-rr-time-delete"> Late Dues</span>
+							</label>
+							<script>
+								document.addEventListener("click", evt => {
+									console.clear();
+									//  event delegation: only act if the click originated from input[type=radio]
+									if (evt.target.type === "radio") {
+										console.log(`Value: ${evt.target.value}, text: ${document.querySelector(`label[for='${evt.target.id}']`).textContent}`);
+									}
+								})
+							</script>
+
+					</td>
+				</tr>
 					<tr class="table-warning">
 						<th scope="col"><a href="javascript:void(0)" onclick="setGetParameter('sort', 'byId')">ID</a></th>
 						<th scope="col"><a href="javascript:void(0)" onclick="setGetParameter('sort', 'fname')">First Name</a></th>
