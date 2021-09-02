@@ -1,9 +1,3 @@
-<!--/* Workaround for bug https://youtrack.jetbrains.com/issue/IDEA-132738 -->
-<!--@thymesVar id="post" type="your.package.Post"-->
-<!--@thymesVar id="title" type="String"-->
-<!--@thymesVar id="content" type="String"-->
-<!--*/-->
-
 <div th:replace="fragments/header :: head"></div>
 <div th:replace="fragments/topnav :: navbar"></div>
 
@@ -42,7 +36,7 @@
 						&nbsp;&nbsp;
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
 							<label class="btn btn-info active">
-								<input type="radio" name="options" id="option1" autocomplete="off" value="active" checked><span class="fi fi-rr-apps-add"> Active</span>
+								<input type="radio" name="options" id="option1" autocomplete="off" value="active"><span class="fi fi-rr-apps-add"> Active</span>
 							</label>
 							<label class="btn btn-info">
 								<input type="radio" name="options" id="option2" autocomplete="off" value="nonrenu"> <span class="fi fi-rr-cross-circle"> Non-Renew</span>
@@ -60,11 +54,18 @@
 								<input type="radio" name="options" id="option6" autocomplete="off" value="late"> <span class="fi fi-rr-time-delete"> Late Dues</span>
 							</label>
 							<script>
+								//document.getElementById()
+								// get the rb param which tells you which radio button is selected, needed because of refresh
+								const typeselected = urlParams.get('rb');
+								// select the radio button by id;
+								document.getElementById(typeselected).checked = true;
+								console.log(typeselected);
 								document.addEventListener("click", evt => {
-									console.clear();
-									//  event delegation: only act if the click originated from input[type=radio]
+									//console.clear();
+									//  this takes the event from any radio button and does stuff
 									if (evt.target.type === "radio") {
-										console.log(`Value: ${evt.target.value}`);
+										// sets parameter for correct radio button to be selected on refresh also correct data
+										setGetParameter('rb', `${evt.target.id}`);
 									}
 								})
 							</script>
@@ -96,9 +97,8 @@
 						<td th:text="${membershipListDTO.state}"></td>
 						<td th:text="${membershipListDTO.zip}"></td>
 						<td><a type="button" class="btn btn-primary" href="/">View</a></td>
-<!-- 						<td><a class="btn btn-primary" th:if="${offerDTO.id} &gt; 0" th:href="@{/editOffer/} + ${offerDTO.id}">Edit</a></td>
-						<td><a class="btn btn-danger" th:if="${offerDTO.id} &gt; 0" th:href="@{/deleteOffer/} + ${offerDTO.id}">Delete</a></td>
- -->					</tr>
+
+ 					</tr>
 				</tbody>
 			</table>
 		</div>

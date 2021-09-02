@@ -1,7 +1,7 @@
 package main.service;
 
 import java.util.Comparator;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,10 +46,7 @@ public class MembershipServiceImpl implements MembershipService {
 
 	@Override
 	public void saveOrUpdate(MembershipEntity membershipEntity) {
-		if(membershipEntity.getMsId() == 0) {
-			membershipEntity.setJoinDate((java.sql.Date) new Date());
-		}
-		membershipRepository.save(membershipEntity);
+
 	}
 
 	@Override
@@ -59,9 +56,24 @@ public class MembershipServiceImpl implements MembershipService {
 
 
 	@Override
-	public List<MembershipListDTO> findMembershipListEntityByFiscalYearAndRenewAndMemberType(int fiscal_year, boolean renew, int memberType, String sort) {
+	public List<MembershipListDTO> findMembershipList(int fiscal_year, String rb, int memberType, String sort) {
 		List<MembershipListEntity> membershipListEntities;
-		membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndRenewAndMemberType(fiscal_year,renew,memberType);
+		if(rb.equals("option2")) { // non-renew
+			membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndRenewAndMemberType(fiscal_year, false, memberType);
+		} else if(rb.equals("option3")) { // all
+			membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndMemberType(fiscal_year, memberType);
+		} else if(rb.equals(("option4"))) { // new members
+			Date begin = Date.valueOf(fiscal_year + "-01-01");
+			Date end = Date.valueOf(fiscal_year + "-12-31");
+			membershipListEntities = membershipListRepository.findMembershipListEntityWhereJoinDateIsBetween(begin, end);
+
+		} else if(rb.equals(("option5"))) {  // return members
+			membershipListEntities = null;
+		} else if(rb.equals(("option6"))) {  // late dues
+			membershipListEntities = null;
+		} else {
+			membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndRenewAndMemberType(fiscal_year, true, memberType);
+		}
 		var membershipListDTO = membershipListEntities.stream().map(o -> new MembershipListDTO(o.getMsId(),o.getMembershipId(),
 				o.getJoinDate(), o.getfName(), o.getlName(), o.getMemType(), o.getAddress(),o.getCity(),o.getState(),o.getZip())).collect(Collectors.toList());
 		return sortList(membershipListDTO, sort);
@@ -99,4 +111,5 @@ public class MembershipServiceImpl implements MembershipService {
 				.map(o -> new MembershipDTO(o.getMsId(),o.getpId(), o.getJoinDate(), o.getMemType(), o.getAddress(), o.getCity(), o.getState(), o.getZip())).collect(Collectors.toList());
 		return membershipDTO;
 	}
+
 }

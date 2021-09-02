@@ -1,5 +1,5 @@
 
-function setGetParameter(paramName, paramValue)
+function setGetParameter(paramName, paramValue, refresh)
 {
     var url = window.location.href;
     var hash = location.hash;
@@ -27,6 +27,6 @@ function getParameter()
 {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const product = urlParams.get('year');
+    const product = urlParams.get('rb');
     return product;
 }

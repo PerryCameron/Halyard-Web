@@ -29,8 +29,8 @@ public class MembershipController {
 	}
 
 	@GetMapping("membership")
-	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam boolean renew, @RequestParam String sort) {
-		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberType(year, renew, 1, sort);
+	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam String rb, @RequestParam String sort) {
+		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipList(year, rb, 1, sort);
 		model.addAttribute("membershipListDTO", membershipListDTO);
 		return "memberships";
 	}
@@ -39,7 +39,7 @@ public class MembershipController {
 	@GetMapping("/membershiplistjson")
 	@ResponseBody
 	public List<MembershipListDTO> getMembershipList() {
-		List<MembershipListDTO>	theList = membershipService.findMembershipListEntityByFiscalYearAndRenewAndMemberType(2021, true, 1, "byId");
+		List<MembershipListDTO>	theList = membershipService.findMembershipList(2021, "option1", 1, "byId");
 		System.out.println(theList.size());
 	return theList;
 

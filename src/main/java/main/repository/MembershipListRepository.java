@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -15,4 +16,8 @@ public interface MembershipListRepository extends JpaRepository<MembershipListEn
 
 	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndRenewAndMemberType(int fiscal_year, boolean renew, int memberType);
 
+	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndMemberType(int fiscal_year, int memberType);
+
+	@Query("from MembershipListEntity m where m.joinDate between ?1 and ?2")
+	List<MembershipListEntity> findMembershipListEntityWhereJoinDateIsBetween(Date begin, Date end);
 }
