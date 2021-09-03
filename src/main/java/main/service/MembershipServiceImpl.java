@@ -1,5 +1,7 @@
 package main.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.sql.Date;
 import java.util.List;
@@ -19,6 +21,8 @@ import main.repository.MembershipRepository;
 
 @Service
 public class MembershipServiceImpl implements MembershipService {
+
+	static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Autowired
 	private MembershipRepository membershipRepository;
@@ -63,9 +67,15 @@ public class MembershipServiceImpl implements MembershipService {
 		} else if(rb.equals("option3")) { // all
 			membershipListEntities = membershipListRepository.findMembershipListEntityByFiscalYearAndMemberType(fiscal_year, memberType);
 		} else if(rb.equals(("option4"))) { // new members
-			Date begin = Date.valueOf(fiscal_year + "-01-01");
-			Date end = Date.valueOf(fiscal_year + "-12-31");
-			membershipListEntities = membershipListRepository.findMembershipListEntityWhereJoinDateIsBetween(begin, end);
+			Date begin = null;
+			Date end = null;
+			try {
+				begin = (Date) sdf.parse(fiscal_year + "-01-01");
+				end = (Date) sdf.parse(fiscal_year + "-12-31");
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			membershipListEntities = membershipListRepository.findMembershipListEntityByJoinDateIsBetween(begin,end);
 
 		} else if(rb.equals(("option5"))) {  // return members
 			membershipListEntities = null;

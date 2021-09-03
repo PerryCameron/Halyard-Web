@@ -18,6 +18,6 @@ public interface MembershipListRepository extends JpaRepository<MembershipListEn
 
 	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndMemberType(int fiscal_year, int memberType);
 
-	@Query("from MembershipListEntity m where m.joinDate between ?1 and ?2")
-	List<MembershipListEntity> findMembershipListEntityWhereJoinDateIsBetween(Date begin, Date end);
+//	@Query("from MembershipListEntity m where m.joinDate between ?1 and ?2")
+	List<MembershipListEntity> findMembershipListEntityByJoinDateIsBetween(Date begin, Date end);
 }
