@@ -96,7 +96,7 @@
 						<td th:text="${membershipListDTO.city}"></td>
 						<td th:text="${membershipListDTO.state}"></td>
 						<td th:text="${membershipListDTO.zip}"></td>
-						<td><a type="button" class="btn btn-primary" href="/">View</a></td>
+						<td><a type="button" class="btn btn-primary" th:href="@{'/memberships'(mem=${membershipListDTO.ms_id},year=${param.year})}">View</a></td>
 
  					</tr>
 				</tbody>

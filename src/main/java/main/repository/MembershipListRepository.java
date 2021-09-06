@@ -19,5 +19,6 @@ public interface MembershipListRepository extends JpaRepository<MembershipListEn
 	List<MembershipListEntity> findMembershipListEntityByFiscalYearAndMemberType(int fiscal_year, int memberType);
 
 //	@Query("from MembershipListEntity m where m.joinDate between ?1 and ?2")
-	List<MembershipListEntity> findMembershipListEntityByJoinDateIsBetween(Date begin, Date end);
+	@Query(value="SELECT id.MS_ID, m.JOIN_DATE, p.F_NAME FROM membership_id id inner join membership m on id.MS_ID=id.MEMBERSHIP_ID inner join person p on m.MS_ID=p.MS_ID", nativeQuery = true)
+	List<Object[]> queryMultipleTables();
 }

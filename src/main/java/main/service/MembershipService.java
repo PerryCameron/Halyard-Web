@@ -21,4 +21,6 @@ public interface MembershipService {
 	List<MembershipDTO> getAllDTO();
 
 	List<MembershipListDTO> findMembershipList(int fiscal_year, String type, int memberType, String sort);
+
+	void testFunction();
 }

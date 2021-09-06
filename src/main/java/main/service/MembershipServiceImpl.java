@@ -75,7 +75,7 @@ public class MembershipServiceImpl implements MembershipService {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			membershipListEntities = membershipListRepository.findMembershipListEntityByJoinDateIsBetween(begin,end);
+			membershipListEntities = null;
 
 		} else if(rb.equals(("option5"))) {  // return members
 			membershipListEntities = null;
@@ -87,6 +87,14 @@ public class MembershipServiceImpl implements MembershipService {
 		var membershipListDTO = membershipListEntities.stream().map(o -> new MembershipListDTO(o.getMsId(),o.getMembershipId(),
 				o.getJoinDate(), o.getfName(), o.getlName(), o.getMemType(), o.getAddress(),o.getCity(),o.getState(),o.getZip())).collect(Collectors.toList());
 		return sortList(membershipListDTO, sort);
+	}
+
+	@Override
+	public void testFunction() {
+		List<Object[]> test = membershipListRepository.queryMultipleTables();
+		for(Object[] ti: test) {
+			System.out.println(ti.toString());
+		}
 	}
 
 

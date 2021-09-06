@@ -3,6 +3,7 @@ package main.controller;
 import java.util.List;
 
 import main.dto.MembershipListDTO;
+import main.service.TestRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ public class MembershipController {
 	@Autowired
 	private MembershipService membershipService;
 
+	private TestRepositoryImpl testRepository;
+
 
 
 	@GetMapping("/")
@@ -28,11 +31,18 @@ public class MembershipController {
 		return "index";
 	}
 
-	@GetMapping("membership")
+	@GetMapping("test")
+	@ResponseBody
+	public List<Object[]> getTest() {
+		List<Object[]> test = testRepository.methodThatTestsDTO();
+		return test;
+	}
+
+	@GetMapping("lists")
 	public String findMembershipListEntity(Model model, @RequestParam int year, @RequestParam String rb, @RequestParam String sort) {
 		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipList(year, rb, 1, sort);
 		model.addAttribute("membershipListDTO", membershipListDTO);
-		return "memberships";
+		return "lists";
 	}
 
 	// for testing params
@@ -42,6 +52,5 @@ public class MembershipController {
 		List<MembershipListDTO>	theList = membershipService.findMembershipList(2021, "option1", 1, "byId");
 		System.out.println(theList.size());
 	return theList;
-
 	}
 }
