@@ -8,9 +8,9 @@ import main.model.PersonEntity;
 
 public class MembershipDTO {
 	
-	private int ms_id;
+	private Integer ms_id;
 	
-	private int p_id;
+	private Integer p_id;
 	
 	private Date join_date;
 	
@@ -33,7 +33,7 @@ public class MembershipDTO {
 	}
 
 
-	public MembershipDTO(int ms_id, int p_id, Date join_date, String mem_type, String address, String city,
+	public MembershipDTO(Integer ms_id, Integer p_id, Date join_date, String mem_type, String address, String city,
 		//	String state, String zip, List<PersonEntity> people) {
 		String state, String zip) {
 		this.ms_id = ms_id;
@@ -58,22 +58,22 @@ public class MembershipDTO {
 	}
 
 
-	public int getMs_id() {
+	public Integer getMs_id() {
 		return ms_id;
 	}
 
 
-	public void setMs_id(int ms_id) {
+	public void setMs_id(Integer ms_id) {
 		this.ms_id = ms_id;
 	}
 
 
-	public int getP_id() {
+	public Integer getP_id() {
 		return p_id;
 	}
 
 
-	public void setP_id(int p_id) {
+	public void setP_id(Integer p_id) {
 		this.p_id = p_id;
 	}
 

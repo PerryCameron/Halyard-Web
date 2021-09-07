@@ -105,6 +105,13 @@ public class MembershipServiceImpl implements MembershipService {
 		return membershipIdDTO;
 	}
 
+	@Override
+	public MembershipDTO findMembership(int ms_id) {
+		MembershipEntity m = membershipRepository.findMembershipEntityByMsId(ms_id);
+		var membershipDTO = new MembershipDTO(m.getMsId(),m.getpId(),m.getJoinDate(),m.getMemType(),m.getAddress(),m.getCity(),m.getState(),m.getZip());
+		return membershipDTO;
+	}
+
 	public MembershipIdDTO findIdByYear(int year, List<MembershipIdDTO> ids) {
 		for(MembershipIdDTO id: ids) {
 			if(id.getFiscalYear() == year)

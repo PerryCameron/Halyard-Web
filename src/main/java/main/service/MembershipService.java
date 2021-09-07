@@ -26,6 +26,8 @@ public interface MembershipService {
 	void testFunction();
 
 	List<MembershipIdDTO> findMembershipId(int fiscal_year, int ms_id);
-	// for selecting a single membershipId DTO
-	public MembershipIdDTO findIdByYear(int year, List<MembershipIdDTO> ids);
+
+	MembershipIdDTO findIdByYear(int year, List<MembershipIdDTO> ids);
+
+	MembershipDTO findMembership(int ms_id);
 }

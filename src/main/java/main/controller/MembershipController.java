@@ -56,9 +56,11 @@ public class MembershipController {
 	public String findMembership(Model model, @RequestParam int year, @RequestParam int ms_id) {
 		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipId(year,ms_id);
 		MembershipIdDTO selectedMembershipId = membershipService.findIdByYear(year, membershipIdDTO);
+		MembershipDTO membershipDTO = membershipService.findMembership(ms_id);
 		//model.addAttribute("membershipIdDTO", membershipIdDTO);
 		System.out.println(selectedMembershipId);
 		model.addAttribute("selectedMembershipId", selectedMembershipId);
+		model.addAttribute("membership", membershipDTO);
 		return "membership";
 	}
 
