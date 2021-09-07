@@ -1,0 +1,25 @@
+<div th:replace="fragments/header :: head"></div>
+<div th:replace="fragments/topnav :: navbar"></div>
+<div class="container">
+
+		<div class="table-responsive">
+			<table class="table table-hover table-striped w-auto w-100 d-block d-md-table table-bordered" th:if="${!selectedMembershipId.empty}">
+
+				<tbody>
+					<tr>
+						<td>Record Year:</td>
+						<td th:text="${selectedMembershipId.fiscalYear}"></td>
+						<td>Membership ID:</td>
+						<td th:text="${#dates.format(selectedMembershipId.membership_id, 'dd-MMM-yyyy')}"></td>
+						<td >Membership Type:</td>
+						<td th:text="${selectedMembershipId.address}"></td>
+						<td>Join Date:</td>
+						<td>1/1/1900</td>
+ 					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+</div>
+<div th:replace="fragments/footer :: foot"></div>

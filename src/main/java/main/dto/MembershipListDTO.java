@@ -45,7 +45,7 @@ public class MembershipListDTO {
 		this.zip = zip;
 	}
 
-	private String getPrimaryPerson(List<PersonEntity> people) {
+    private String getPrimaryPerson(List<PersonEntity> people) {
 		String primaryPerson = "";
 		for(PersonEntity p: people) {
 			if(p.getMemberType() == 1) primaryPerson = p.getfName() + " " + p.getlName();

@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import main.dto.MembershipIdDTO;
 import main.dto.MembershipListDTO;
 import main.model.MembershipEntity;
 import main.model.MembershipIdEntity;
@@ -95,6 +96,21 @@ public class MembershipServiceImpl implements MembershipService {
 		for(Object[] ti: test) {
 			System.out.println(ti.toString());
 		}
+	}
+
+	@Override
+	public List<MembershipIdDTO> findMembershipId(int fiscal_year, int ms_id) {
+		List<MembershipIdEntity> idEntities = membershipIdRepository.findMembershipIdEntityByMembershipByMsId_MsId(ms_id);
+		var membershipIdDTO  = idEntities.stream().map(o-> new MembershipIdDTO(o.getMid(),o.getFiscalYear(),o.getMembershipByMsId().getMsId(),o.getMembershipId(),o.getRenew(),o.getMemType(),o.getSelected(),o.getLateRenew())).collect(Collectors.toList());
+		return membershipIdDTO;
+	}
+
+	public MembershipIdDTO findIdByYear(int year, List<MembershipIdDTO> ids) {
+		for(MembershipIdDTO id: ids) {
+			if(id.getFiscalYear() == year)
+				return id;
+		}
+		return null;
 	}
 
 

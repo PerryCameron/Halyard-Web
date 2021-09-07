@@ -2,6 +2,7 @@ package main.controller;
 
 import java.util.List;
 
+import main.dto.MembershipIdDTO;
 import main.dto.MembershipListDTO;
 import main.service.TestRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,12 @@ public class MembershipController {
 
 
 
-	@GetMapping("/")
-	public String getHomePage(Model model) {
-		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
-		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String getHomePage(Model model) {
+//		List<MembershipDTO> membershipDTO = membershipService.getAllDTO();
+//		model.addAttribute("membershipDTO", membershipDTO);  // creates the name you can use in your view
+//		return "index";
+//	}
 
 	@GetMapping("test")
 	@ResponseBody
@@ -43,6 +44,22 @@ public class MembershipController {
 		List<MembershipListDTO> membershipListDTO = membershipService.findMembershipList(year, rb, 1, sort);
 		model.addAttribute("membershipListDTO", membershipListDTO);
 		return "lists";
+	}
+
+	@GetMapping("/")
+	public String returnIndex() {
+		return "index";
+	}
+
+	/// creates membership view
+	@GetMapping("membership")
+	public String findMembership(Model model, @RequestParam int year, @RequestParam int ms_id) {
+		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipId(year,ms_id);
+		MembershipIdDTO selectedMembershipId = membershipService.findIdByYear(year, membershipIdDTO);
+		//model.addAttribute("membershipIdDTO", membershipIdDTO);
+		System.out.println(selectedMembershipId);
+		model.addAttribute("selectedMembershipId", selectedMembershipId);
+		return "membership";
 	}
 
 	// for testing params

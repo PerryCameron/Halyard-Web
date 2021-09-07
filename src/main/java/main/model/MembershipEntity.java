@@ -9,8 +9,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "membership", schema = "ECSC_SQL")
 public class MembershipEntity {
-    private int msId;
-    private int pId;
+    private Integer msId;
+    private Integer pId;
     private Date joinDate;
     private String memType;
     private String address;
@@ -21,7 +21,7 @@ public class MembershipEntity {
 
     @Id
     @Column(name = "MS_ID")
-    public int getMsId() {
+    public Integer getMsId() {
         return msId;
     }
 
@@ -31,7 +31,7 @@ public class MembershipEntity {
 
     @Basic
     @Column(name = "P_ID")
-    public int getpId() {
+    public Integer getpId() {
         return pId;
     }
 

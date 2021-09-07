@@ -96,7 +96,7 @@
 						<td th:text="${membershipListDTO.city}"></td>
 						<td th:text="${membershipListDTO.state}"></td>
 						<td th:text="${membershipListDTO.zip}"></td>
-						<td><a type="button" class="btn btn-primary" th:href="@{'/memberships'(mem=${membershipListDTO.ms_id},year=${param.year})}">View</a></td>
+						<td><a type="button" class="btn btn-primary" th:href="@{'/membership'(ms_id=${membershipListDTO.ms_id},year=${param.year})}">View</a></td>
 
  					</tr>
 				</tbody>
@@ -104,5 +104,5 @@
 		</div>
 
 
-	</div>
+
 <div th:replace="fragments/footer :: foot"></div>

@@ -1,20 +1,14 @@
 package main.dto;
 
-import main.model.PersonEntity;
-
-import javax.persistence.OrderBy;
-import java.util.Date;
-import java.util.List;
-
-
 public class MembershipIdDTO {
 
-	private int mid;
+	private Integer mid;
 
-	private int fiscalYear;
+	private Integer fiscalYear;
 
-	@OrderBy
-	private int membershipId;
+	private Integer ms_id;
+
+	private Integer membershipId;
 
 	private Boolean renew;
 
@@ -22,67 +16,51 @@ public class MembershipIdDTO {
 
 	private Boolean selected;
 
-	private int ms_id;
-
-	private int p_id;
-
-	private Date join_date;
-
-	private String address;
-
-	private String city;
-
-	private String state;
-
-	private String zip;
-
-//	private String fName;
-//
-//	private String lName;
+	private Boolean late_renew;
 
 	public MembershipIdDTO() {
 	}
 
-	public MembershipIdDTO(int mid, int fiscalYear, int membershipId, Boolean renew, String memType, Boolean selected,
-						   int ms_id, int p_id, Date join_date, String address, String city, String state, String zip) {
+	public MembershipIdDTO(Integer mid, Integer fiscalYear, Integer ms_id, Integer membershipId, Boolean renew, String memType, Boolean selected, Boolean late_renew) {
 		this.mid = mid;
 		this.fiscalYear = fiscalYear;
+		this.ms_id = ms_id;
 		this.membershipId = membershipId;
 		this.renew = renew;
 		this.memType = memType;
 		this.selected = selected;
-		this.ms_id = ms_id;
-		this.p_id = p_id;
-		this.join_date = join_date;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-//		this.fName = fName;
-//		this.lName = lName;
+		this.late_renew = late_renew;
 	}
 
-	public int getMid() {
+	public Integer getMid() {
 		return mid;
 	}
 
-	public void setMid(int mid) {
+	public void setMid(Integer mid) {
 		this.mid = mid;
 	}
 
-	public int getFiscalYear() {
+	public Integer getFiscalYear() {
 		return fiscalYear;
 	}
 
-	public void setFiscalYear(int fiscalYear) {
+	public void setFiscalYear(Integer fiscalYear) {
 		this.fiscalYear = fiscalYear;
 	}
 
-	public int getMembershipId() {
+	public Integer getMs_id() {
+		return ms_id;
+	}
+
+	public void setMs_id(Integer ms_id) {
+		this.ms_id = ms_id;
+	}
+
+	public Integer getMembershipId() {
 		return membershipId;
 	}
 
-	public void setMembershipId(int membershipId) {
+	public void setMembershipId(Integer membershipId) {
 		this.membershipId = membershipId;
 	}
 
@@ -110,75 +88,25 @@ public class MembershipIdDTO {
 		this.selected = selected;
 	}
 
-	public int getMs_id() {
-		return ms_id;
+	public Boolean getLate_renew() {
+		return late_renew;
 	}
 
-	public void setMs_id(int ms_id) {
-		this.ms_id = ms_id;
+	public void setLate_renew(Boolean late_renew) {
+		this.late_renew = late_renew;
 	}
 
-	public int getP_id() {
-		return p_id;
+	@Override
+	public String toString() {
+		return "MembershipIdDTO{" +
+				"mid=" + mid +
+				", fiscalYear=" + fiscalYear +
+				", ms_id=" + ms_id +
+				", membershipId=" + membershipId +
+				", renew=" + renew +
+				", memType='" + memType + '\'' +
+				", selected=" + selected +
+				", late_renew=" + late_renew +
+				'}';
 	}
-
-	public void setP_id(int p_id) {
-		this.p_id = p_id;
-	}
-
-	public Date getJoin_date() {
-		return join_date;
-	}
-
-	public void setJoin_date(Date join_date) {
-		this.join_date = join_date;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-//	public String getfName() {
-//		return fName;
-//	}
-//
-//	public void setfName(String fName) {
-//		this.fName = fName;
-//	}
-//
-//	public String getlName() {
-//		return lName;
-//	}
-//
-//	public void setlName(String lName) {
-//		this.lName = lName;
-//	}
 }
