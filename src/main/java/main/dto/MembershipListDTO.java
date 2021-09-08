@@ -10,7 +10,7 @@ public class MembershipListDTO {
 
 	private int ms_id;
 
-	private int membership_id;
+	public int membership_id;
 
 	private Date join_date;
 

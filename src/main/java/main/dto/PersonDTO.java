@@ -8,7 +8,7 @@ public class PersonDTO {
 
     private Integer p_id;
 
-    private Integer member_type;
+    public Integer member_type;
 
     private String first_name;
 
