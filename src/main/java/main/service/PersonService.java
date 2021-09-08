@@ -11,7 +11,7 @@ public interface PersonService {
 	
 	public PersonEntity getById(int id);
 	
-	public List<PersonDTO> getByMSID(int msid);
+	public List<PersonDTO> getByMsId(int msid);
 	
 	public void saveOrUpdate(PersonEntity person);
 	

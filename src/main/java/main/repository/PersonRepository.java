@@ -6,10 +6,11 @@ import main.model.PersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PersonRepository extends JpaRepository<PersonEntity, Integer>{
-	
-// @Query(value = "select p from Person p where p.memberType=?1")
-// 	List<Person> findPrimaryMember(int type);
+
+    List<PersonEntity> findPersonEntityByMembershipByMsId_MsId(int ms_id);
 
 }

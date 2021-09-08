@@ -1,14 +1,13 @@
 package main.model;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.sql.Date;
 import java.util.Arrays;
 
 @Entity
 @Table(name = "person", schema = "ECSC_SQL")
 public class PersonEntity {
-    private int pId;
+    private Integer pId;
     private Integer memberType;
     private String fName;
     private String lName;
@@ -22,11 +21,11 @@ public class PersonEntity {
 
     @Id
     @Column(name = "P_ID")
-    public int getpId() {
+    public Integer getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(Integer pId) {
         this.pId = pId;
     }
 
@@ -143,7 +142,7 @@ public class PersonEntity {
 
     @Override
     public int hashCode() {
-        int result = pId;
+        Integer result = pId;
         result = 31 * result + (memberType != null ? memberType.hashCode() : 0);
         result = 31 * result + (fName != null ? fName.hashCode() : 0);
         result = 31 * result + (lName != null ? lName.hashCode() : 0);

@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class PersonDTO {
 
-    private int p_id;
+    private Integer p_id;
 
-    private int member_type;
+    private Integer member_type;
 
     private String first_name;
 
@@ -24,13 +24,11 @@ public class PersonDTO {
 
     private String nickName;
 
-    private MembershipEntity membershipByMsId;
-
     public PersonDTO() {
     }
 
-    public PersonDTO(int p_id, int member_type, String first_name, String last_name, Date birthday,
-                     String occupation, String buisness, boolean isActive, String nickName, MembershipEntity membershipByMsId) {
+    public PersonDTO(Integer p_id, Integer member_type, String first_name, String last_name, Date birthday,
+                     String occupation, String buisness, boolean isActive, String nickName) {
         this.p_id = p_id;
         this.member_type = member_type;
         this.first_name = first_name;
@@ -42,19 +40,19 @@ public class PersonDTO {
         this.nickName = nickName;
     }
 
-    public int getP_id() {
+    public Integer getP_id() {
         return p_id;
     }
 
-    public void setP_id(int p_id) {
+    public void setP_id(Integer p_id) {
         this.p_id = p_id;
     }
 
-    public int getMember_type() {
+    public Integer getMember_type() {
         return member_type;
     }
 
-    public void setMember_type(int member_type) {
+    public void setMember_type(Integer member_type) {
         this.member_type = member_type;
     }
 
@@ -114,11 +112,11 @@ public class PersonDTO {
         this.nickName = nickName;
     }
 
-    public MembershipEntity getMembershipByMsId() {
-        return membershipByMsId;
-    }
-
-    public void setMembershipByMsId(MembershipEntity membershipByMsId) {
-        this.membershipByMsId = membershipByMsId;
-    }
+//    public MembershipEntity getMembershipByMsId() {
+//        return membershipByMsId;
+//    }
+//
+//    public void setMembershipByMsId(MembershipEntity membershipByMsId) {
+//        this.membershipByMsId = membershipByMsId;
+//    }
 }

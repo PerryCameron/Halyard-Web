@@ -4,6 +4,8 @@ import java.util.List;
 
 import main.dto.MembershipIdDTO;
 import main.dto.MembershipListDTO;
+import main.dto.PersonDTO;
+import main.service.PersonService;
 import main.service.TestRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,10 @@ public class MembershipController {
 	
 	@Autowired
 	private MembershipService membershipService;
+
+	@Autowired
+	private PersonService personService;
+
 
 	private TestRepositoryImpl testRepository;
 
@@ -55,12 +61,15 @@ public class MembershipController {
 	@GetMapping("membership")
 	public String findMembership(Model model, @RequestParam int year, @RequestParam int ms_id) {
 		List<MembershipIdDTO> membershipIdDTO = membershipService.findMembershipId(year,ms_id);
+		List<PersonDTO> personDTOS = personService.getByMsId(ms_id);
 		MembershipIdDTO selectedMembershipId = membershipService.findIdByYear(year, membershipIdDTO);
 		MembershipDTO membershipDTO = membershipService.findMembership(ms_id);
+
 		//model.addAttribute("membershipIdDTO", membershipIdDTO);
 		System.out.println(selectedMembershipId);
 		model.addAttribute("selectedMembershipId", selectedMembershipId);
 		model.addAttribute("membership", membershipDTO);
+		model.addAttribute("people", personDTOS);
 		return "membership";
 	}
 
