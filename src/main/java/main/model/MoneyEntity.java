@@ -1,6 +1,7 @@
 package main.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -9,28 +10,28 @@ public class MoneyEntity {
     private int moneyId;
     private Integer fiscalYear;
     private Integer batch;
-    private Integer officerCredit;
+    private BigDecimal officerCredit;
     private Integer extraKey;
     private Integer kayakShedKey;
     private Integer sailLoftKey;
     private Integer sailSchoolLoftKey;
     private Integer beach;
-    private Integer wetSlip;
+    private BigDecimal wetSlip;
     private Integer kayakRack;
     private Integer kayakShed;
     private Integer sailLoft;
     private Integer sailSchoolLaserLoft;
     private Integer winterStorage;
-    private Integer yscDonation;
-    private Integer paid;
-    private Integer total;
-    private Integer credit;
-    private Integer balance;
-    private Integer dues;
+    private BigDecimal yscDonation;
+    private BigDecimal paid;
+    private BigDecimal total;
+    private BigDecimal credit;
+    private BigDecimal balance;
+    private BigDecimal dues;
     private Boolean commited;
     private Boolean closed;
-    private Integer other;
-    private Integer initiation;
+    private BigDecimal other;
+    private BigDecimal initiation;
     private Boolean supplemental;
     private MembershipEntity membershipByMsId;
 
@@ -66,11 +67,11 @@ public class MoneyEntity {
 
     @Basic
     @Column(name = "OFFICER_CREDIT")
-    public Integer getOfficerCredit() {
+    public BigDecimal getOfficerCredit() {
         return officerCredit;
     }
 
-    public void setOfficerCredit(Integer officerCredit) {
+    public void setOfficerCredit(BigDecimal officerCredit) {
         this.officerCredit = officerCredit;
     }
 
@@ -126,11 +127,11 @@ public class MoneyEntity {
 
     @Basic
     @Column(name = "WET_SLIP")
-    public Integer getWetSlip() {
+    public BigDecimal getWetSlip() {
         return wetSlip;
     }
 
-    public void setWetSlip(Integer wetSlip) {
+    public void setWetSlip(BigDecimal wetSlip) {
         this.wetSlip = wetSlip;
     }
 
@@ -186,61 +187,61 @@ public class MoneyEntity {
 
     @Basic
     @Column(name = "YSC_DONATION")
-    public Integer getYscDonation() {
+    public BigDecimal getYscDonation() {
         return yscDonation;
     }
 
-    public void setYscDonation(Integer yscDonation) {
+    public void setYscDonation(BigDecimal yscDonation) {
         this.yscDonation = yscDonation;
     }
 
     @Basic
     @Column(name = "PAID")
-    public Integer getPaid() {
+    public BigDecimal getPaid() {
         return paid;
     }
 
-    public void setPaid(Integer paid) {
+    public void setPaid(BigDecimal paid) {
         this.paid = paid;
     }
 
     @Basic
     @Column(name = "TOTAL")
-    public Integer getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
     @Basic
     @Column(name = "CREDIT")
-    public Integer getCredit() {
+    public BigDecimal getCredit() {
         return credit;
     }
 
-    public void setCredit(Integer credit) {
+    public void setCredit(BigDecimal credit) {
         this.credit = credit;
     }
 
     @Basic
     @Column(name = "BALANCE")
-    public Integer getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
     @Basic
     @Column(name = "DUES")
-    public Integer getDues() {
+    public BigDecimal getDues() {
         return dues;
     }
 
-    public void setDues(Integer dues) {
+    public void setDues(BigDecimal dues) {
         this.dues = dues;
     }
 
@@ -266,21 +267,21 @@ public class MoneyEntity {
 
     @Basic
     @Column(name = "OTHER")
-    public Integer getOther() {
+    public BigDecimal getOther() {
         return other;
     }
 
-    public void setOther(Integer other) {
+    public void setOther(BigDecimal other) {
         this.other = other;
     }
 
     @Basic
     @Column(name = "INITIATION")
-    public Integer getInitiation() {
+    public BigDecimal getInitiation() {
         return initiation;
     }
 
-    public void setInitiation(Integer initiation) {
+    public void setInitiation(BigDecimal initiation) {
         this.initiation = initiation;
     }
 

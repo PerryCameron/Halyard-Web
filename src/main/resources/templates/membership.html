@@ -2,7 +2,7 @@
 <div th:replace="fragments/topnav :: navbar"></div>
 <div class="container">
 
-		<div class="table-responsive">
+		<th:block class="table-responsive">
 			<table class="table table-hover table-striped w-auto w-100 d-block d-md-table table-bordered" th:if="${selectedMembershipId != null}">
 
 				<tbody>
@@ -53,25 +53,46 @@
 
 <!--					<table th:if="${!person.empty}">-->
 
-<!--						<tr th:each="personDTO : ${person}">-->
-<!--							<td th:text="${personDTO.member_type}"></td>-->
+<!--						<tr th:each="pers : ${person}">-->
+<!--							<td th:text="${pers.member_type}"></td>-->
 <!--						</tr>-->
 <!--					</table>-->
 
-<!--					<ul class="nav nav-pills" >-->
-<!--						<li class="nav-item" th:each="personDTOS : ${people}">-->
-<!--&lt;!&ndash;					<td th:text="${membershipListDTO.membership_id}"></td>&ndash;&gt;-->
-<!--							<a class="nav-link active" data-toggle="pill" href="#primary" th:text="${people.member_type}">tab label</a>-->
-<!--						</li>-->
+					<ul class="nav nav-tabs" th:if="${!person.empty}">
+						<li class="nav-item" th:each="pers : ${person}">
+							<th:block th:switch="${pers.member_type}">
+<!--								<a class="nav-link active" data-toggle="pill" href="#primary" th:text="${pers.member_type}">tab label</a>-->
+							<a th:case="1" class="nav-link active" data-toggle="pill" href="#primary">Primary</a>
+							<a th:case="2" class="nav-link" data-toggle="pill" href="#secondary">Secondary</a>
+							<a th:case="3" class="nav-link" data-toggle="pill" href="#dependant">Dependant</a>
+							</th:block>
+						</li>
 
-<!--					</ul>-->
+					</ul>
 
-<!--					&lt;!&ndash; Tab panes &ndash;&gt;-->
-<!--					<div class="tab-content">-->
-<!--						<div class="tab-pane container active" id="primary">Testing this stuff</div>-->
-<!--						<div class="tab-pane container fade" id="secondary">More Testing</div>-->
-<!--						<div class="tab-pane container fade" id="dependant">Even More Testing</div>-->
-<!--					</div>-->
+
+					<div class="tab-content" th:if="${!person.empty}">
+						<th:block th:each="pers : ${person}">
+						<th:block th:switch="${pers.member_type}">
+						<div th:case="1"  class="tab-pane container active" id="primary">
+							<form action="#" th:action="@{/updateperson}" th:object="${person[0]}" method="post">
+								<div class="form-group">
+									<label>First Name:</label>
+									<input type="text" classass="form-groupm-control" th:field="*{first_name}" />
+								</div>
+								<div class="form-group">
+									<label>Last Name:</label>
+<!--									<input type="text"  class="form-control" th:field="${pers.last_name}" />-->
+								</div>
+								<input type="submit" value="Update" class="btn btn-secondary"/>
+							</form>
+
+						</div>
+						<div th:case="2" class="tab-pane container fade" id="secondary">More Testing</div>
+						<div th:case="3" class="tab-pane container fade" id="dependant">Even More Testing</div>
+						</th:block>
+						</th:block>
+					</div>
 
 				</td>
 				</tr>

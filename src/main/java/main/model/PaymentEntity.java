@@ -1,16 +1,17 @@
 package main.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
-@Table(name = "payment", schema = "ECSC_SQL", catalog = "")
+@Table(name = "payment", schema = "ECSC_SQL")
 public class PaymentEntity {
     private int payId;
     private String checknumber;
     private String paymentType;
     private Date paymentDate;
-    private int amount;
+    private BigDecimal amount;
     private MoneyEntity moneyByMoneyId;
     private DepositEntity depositByDepositId;
 
@@ -56,11 +57,11 @@ public class PaymentEntity {
 
     @Basic
     @Column(name = "AMOUNT")
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -80,15 +81,7 @@ public class PaymentEntity {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = payId;
-        result = 31 * result + (checknumber != null ? checknumber.hashCode() : 0);
-        result = 31 * result + (paymentType != null ? paymentType.hashCode() : 0);
-        result = 31 * result + (paymentDate != null ? paymentDate.hashCode() : 0);
-        result = 31 * result + amount;
-        return result;
-    }
+
 
     @ManyToOne
     @JoinColumn(name = "MONEY_ID", referencedColumnName = "MONEY_ID", nullable = false)

@@ -1,206 +1,207 @@
 package main.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "defined_fee", schema = "ECSC_SQL", catalog = "")
 public class DefinedFeeEntity {
     private Integer fiscalYear;
-    private Integer duesRegular;
-    private Integer duesFamily;
-    private Integer duesLakeAssociate;
-    private Integer duesSocial;
-    private Integer initiation;
-    private Integer wetSlip;
-    private Integer beach;
-    private Integer winterStorage;
-    private Integer mainGateKey;
-    private Integer sailLoft;
-    private Integer sailLoftKey;
-    private Integer sailSchoolLaserLoft;
-    private Integer sailSchoolLoftKey;
-    private Integer kayakRack;
-    private Integer kayakShed;
-    private Integer kayakShedKey;
-    private Integer workCredit;
+    private BigDecimal duesRegular;
+    private BigDecimal duesFamily;
+    private BigDecimal duesLakeAssociate;
+    private BigDecimal duesSocial;
+    private BigDecimal initiation;
+    private BigDecimal wetSlip;
+    private BigDecimal beach;
+    private BigDecimal winterStorage;
+    private BigDecimal mainGateKey;
+    private BigDecimal sailLoft;
+    private BigDecimal sailLoftKey;
+    private BigDecimal sailSchoolLaserLoft;
+    private BigDecimal sailSchoolLoftKey;
+    private BigDecimal kayakRack;
+    private BigDecimal kayakShed;
+    private BigDecimal kayakShedKey;
+    private BigDecimal workCredit;
 
     @Id
     @Column(name = "FISCAL_YEAR")
-    public int getFiscalYear() {
+    public  Integer getFiscalYear() {
         return fiscalYear;
     }
 
-    public void setFiscalYear(int fiscalYear) {
+    public void setFiscalYear(Integer fiscalYear) {
         this.fiscalYear = fiscalYear;
     }
 
     @Basic
     @Column(name = "DUES_REGULAR")
-    public Integer getDuesRegular() {
+    public BigDecimal getDuesRegular() {
         return duesRegular;
     }
 
-    public void setDuesRegular(Integer duesRegular) {
+    public void setDuesRegular(BigDecimal duesRegular) {
         this.duesRegular = duesRegular;
     }
 
     @Basic
     @Column(name = "DUES_FAMILY")
-    public Integer getDuesFamily() {
+    public BigDecimal getDuesFamily() {
         return duesFamily;
     }
 
-    public void setDuesFamily(Integer duesFamily) {
+    public void setDuesFamily(BigDecimal duesFamily) {
         this.duesFamily = duesFamily;
     }
 
     @Basic
     @Column(name = "DUES_LAKE_ASSOCIATE")
-    public Integer getDuesLakeAssociate() {
+    public BigDecimal getDuesLakeAssociate() {
         return duesLakeAssociate;
     }
 
-    public void setDuesLakeAssociate(Integer duesLakeAssociate) {
+    public void setDuesLakeAssociate(BigDecimal duesLakeAssociate) {
         this.duesLakeAssociate = duesLakeAssociate;
     }
 
     @Basic
     @Column(name = "DUES_SOCIAL")
-    public Integer getDuesSocial() {
+    public BigDecimal getDuesSocial() {
         return duesSocial;
     }
 
-    public void setDuesSocial(Integer duesSocial) {
+    public void setDuesSocial(BigDecimal duesSocial) {
         this.duesSocial = duesSocial;
     }
 
     @Basic
     @Column(name = "INITIATION")
-    public Integer getInitiation() {
+    public BigDecimal getInitiation() {
         return initiation;
     }
 
-    public void setInitiation(Integer initiation) {
+    public void setInitiation(BigDecimal initiation) {
         this.initiation = initiation;
     }
 
     @Basic
     @Column(name = "WET_SLIP")
-    public Integer getWetSlip() {
+    public BigDecimal getWetSlip() {
         return wetSlip;
     }
 
-    public void setWetSlip(Integer wetSlip) {
+    public void setWetSlip(BigDecimal wetSlip) {
         this.wetSlip = wetSlip;
     }
 
     @Basic
     @Column(name = "BEACH")
-    public Integer getBeach() {
+    public BigDecimal getBeach() {
         return beach;
     }
 
-    public void setBeach(Integer beach) {
+    public void setBeach(BigDecimal beach) {
         this.beach = beach;
     }
 
     @Basic
     @Column(name = "WINTER_STORAGE")
-    public Integer getWinterStorage() {
+    public BigDecimal getWinterStorage() {
         return winterStorage;
     }
 
-    public void setWinterStorage(Integer winterStorage) {
+    public void setWinterStorage(BigDecimal winterStorage) {
         this.winterStorage = winterStorage;
     }
 
     @Basic
     @Column(name = "MAIN_GATE_KEY")
-    public Integer getMainGateKey() {
+    public BigDecimal getMainGateKey() {
         return mainGateKey;
     }
 
-    public void setMainGateKey(Integer mainGateKey) {
+    public void setMainGateKey(BigDecimal mainGateKey) {
         this.mainGateKey = mainGateKey;
     }
 
     @Basic
     @Column(name = "SAIL_LOFT")
-    public Integer getSailLoft() {
+    public BigDecimal getSailLoft() {
         return sailLoft;
     }
 
-    public void setSailLoft(Integer sailLoft) {
+    public void setSailLoft(BigDecimal sailLoft) {
         this.sailLoft = sailLoft;
     }
 
     @Basic
     @Column(name = "SAIL_LOFT_KEY")
-    public Integer getSailLoftKey() {
+    public BigDecimal getSailLoftKey() {
         return sailLoftKey;
     }
 
-    public void setSailLoftKey(Integer sailLoftKey) {
+    public void setSailLoftKey(BigDecimal sailLoftKey) {
         this.sailLoftKey = sailLoftKey;
     }
 
     @Basic
     @Column(name = "SAIL_SCHOOL_LASER_LOFT")
-    public Integer getSailSchoolLaserLoft() {
+    public BigDecimal getSailSchoolLaserLoft() {
         return sailSchoolLaserLoft;
     }
 
-    public void setSailSchoolLaserLoft(Integer sailSchoolLaserLoft) {
+    public void setSailSchoolLaserLoft(BigDecimal sailSchoolLaserLoft) {
         this.sailSchoolLaserLoft = sailSchoolLaserLoft;
     }
 
     @Basic
     @Column(name = "SAIL_SCHOOL_LOFT_KEY")
-    public Integer getSailSchoolLoftKey() {
+    public BigDecimal getSailSchoolLoftKey() {
         return sailSchoolLoftKey;
     }
 
-    public void setSailSchoolLoftKey(Integer sailSchoolLoftKey) {
+    public void setSailSchoolLoftKey(BigDecimal sailSchoolLoftKey) {
         this.sailSchoolLoftKey = sailSchoolLoftKey;
     }
 
     @Basic
     @Column(name = "KAYAK_RACK")
-    public Integer getKayakRack() {
+    public BigDecimal getKayakRack() {
         return kayakRack;
     }
 
-    public void setKayakRack(Integer kayakRack) {
+    public void setKayakRack(BigDecimal kayakRack) {
         this.kayakRack = kayakRack;
     }
 
     @Basic
     @Column(name = "KAYAK_SHED")
-    public Integer getKayakShed() {
+    public BigDecimal getKayakShed() {
         return kayakShed;
     }
 
-    public void setKayakShed(Integer kayakShed) {
+    public void setKayakShed(BigDecimal kayakShed) {
         this.kayakShed = kayakShed;
     }
 
     @Basic
     @Column(name = "KAYAK_SHED_KEY")
-    public Integer getKayakShedKey() {
+    public BigDecimal getKayakShedKey() {
         return kayakShedKey;
     }
 
-    public void setKayakShedKey(Integer kayakShedKey) {
+    public void setKayakShedKey(BigDecimal kayakShedKey) {
         this.kayakShedKey = kayakShedKey;
     }
 
     @Basic
     @Column(name = "WORK_CREDIT")
-    public Integer getWorkCredit() {
+    public BigDecimal getWorkCredit() {
         return workCredit;
     }
 
-    public void setWorkCredit(Integer workCredit) {
+    public void setWorkCredit(BigDecimal workCredit) {
         this.workCredit = workCredit;
     }
 
